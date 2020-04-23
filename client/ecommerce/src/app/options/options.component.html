@@ -1,0 +1,51 @@
+<div class="container">
+    <div *ngIf="actualizar == false;" class="card mb-3 centrar" style="max-width: 540px; margin-top: 20%;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="../../assets/snorlax.png" class="card-img" style="padding-top: 35%;" alt="user img">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Ricardo Alvarado Ramirez</h5>
+                <hr><br><br>
+                <p class="card-text">Email: rickgamer96@gmail.com</p>
+                <p class="card-text">Adress: Zona 8 de Mixco, Guatemala</p>
+                <p class="card-text">Phone Number: 53187505</p>
+                <p class="card-text">Birth: 11/11/1996</p>
+                <button class="btn btn-primary" (click)="updateUser(true)">Update</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div *ngIf="actualizar == true;" class="card mb-3 centrar" style="max-width: 540px; margin-top: 10%;">
+        <div class="row no-gutters">
+          <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Update User</h5>
+                <hr><br><br>
+                <div class="form-group">
+                    <label for="updateName">Name</label>
+                    <input type="text" class="form-control" id="updateName">
+                </div>
+                <div class="form-group">
+                    <label for="updateLast">Last Name</label>
+                    <input type="text" class="form-control" id="updateLast">
+                </div>
+                <div class="form-group">
+                    <label for="updateAdress">Adress</label>
+                    <input type="text" class="form-control" id="updateAdress">
+                </div>
+                <div class="form-group">
+                    <label for="updatePhone">Phone Number</label>
+                    <input type="number" class="form-control" id="updatePhone">
+                </div>
+                <div class="form-group">
+                    <label for="updatePassword">Password</label>
+                    <input type="password" class="form-control" id="updatePassword">
+                </div>
+                <button class="btn btn-primary" (click)="update(false)">Submit</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
