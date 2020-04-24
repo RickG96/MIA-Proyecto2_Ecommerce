@@ -9,6 +9,9 @@ import { HeaderComponent } from './header/header.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { OptionsComponent } from './options/options.component';
+import { MyproductsComponent } from './myproducts/myproducts.component';
+import { FeedComponent } from './feed/feed.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { OptionsComponent } from './options/options.component';
     SigninComponent,
     SignupComponent,
     OptionsComponent,
+    MyproductsComponent,
+    FeedComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,

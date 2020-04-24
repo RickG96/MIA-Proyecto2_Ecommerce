@@ -15,10 +15,21 @@ body {
     color: #E7EFFF;
 }
 
+.btn-color {
+    background-color: #3389FF;
+    color: #E7EFFF;
+}
+
 .titulo-lp {
     font-family: 'Fredoka One', cursive;
     font-size:8vw;
     text-align: center;
+}
+
+.subtitulo-lp {
+    font-family: 'Fredoka One', cursive;
+    font-size:5vw;
+    text-align: left;
 }
 
 .texto-lp {

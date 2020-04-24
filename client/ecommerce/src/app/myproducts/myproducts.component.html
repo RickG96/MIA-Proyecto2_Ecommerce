@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="subtitulo-lp">My Products</h1>
+            <hr><br><br>
+        </div>
+    </div>
+    <div *ngIf="nuevoProducto == false" class="row">
+        <div class="col text-center">
+            <button  type="button" class="btn btn-color btn-lg" (click)="addProducto(true)">New product <i class="fas fa-tshirt"></i></button>
+        </div>
+    </div>
+    <div *ngIf="nuevoProducto == true;" class="row">
+        <div class="col">
+            <div class="card mb-3 centrar" style="max-width: 540px; margin-top: 10%;">
+                <div class="row no-gutters">
+                  <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">New Product</h5>
+                        <hr><br><br>
+                        <div class="form-group">
+                            <label for="newName">Name Product</label>
+                            <input type="text" class="form-control" id="newName">
+                        </div>
+                        <div class="form-group">
+                            <label for="newPrice">Price</label>
+                            <input type="text" class="form-control" id="newPrice">
+                        </div>
+                        <div class="form-group">
+                            <label for="newDescription">Description</label>
+                            <input type="text" class="form-control" id="newDescription">
+                        </div>
+                        <div class="form-group">
+                            <label for="newQuantity">Quantity</label>
+                            <input type="number" class="form-control" id="newQuantity">
+                        </div>
+                        <div class="form-group">
+                            <label for="newColor">Color</label>
+                            <input type="password" class="form-control" id="newColor">
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile" data-browse="Image">Choose File</label>
+                        </div>
+                        <button class="btn btn-primary" (click)="insertProducto(false)">Submit</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="editarProducto == true;" class="row">
+        <div class="col">
+            <div class="card mb-3 centrar" style="max-width: 540px; margin-top: 10%;">
+                <div class="row no-gutters">
+                  <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Update Product</h5>
+                        <hr><br><br>
+                        <div class="form-group">
+                            <label for="updateName">Name Product</label>
+                            <input type="text" class="form-control" id="updateName">
+                        </div>
+                        <div class="form-group">
+                            <label for="updatePrice">Price</label>
+                            <input type="text" class="form-control" id="updatePrice">
+                        </div>
+                        <div class="form-group">
+                            <label for="updateDescription">Description</label>
+                            <input type="text" class="form-control" id="updateDescription">
+                        </div>
+                        <div class="form-group">
+                            <label for="updateQuantity">Quantity</label>
+                            <input type="number" class="form-control" id="updateQuantity">
+                        </div>
+                        <div class="form-group">
+                            <label for="updateColor">Color</label>
+                            <input type="password" class="form-control" id="updateColor">
+                        </div>
+                        <button class="btn btn-primary" (click)="updateProducto(false)">Submit</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-md">
+    <div class="row row-cols-3">
+        <div class="col">
+            <div class="card" style="width: 18rem; padding-top: 7px;">
+                <img src="../../assets/fiora0.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">descripcion del producto</p>
+                    <button class="btn btn-primary" (click)="upProducto(true)">Update</button>
+                    <button class="btn btn-danger" (click)="deleteProducto()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
