@@ -1,0 +1,117 @@
+<app-headerb></app-headerb>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="subtitulo-lp">Departaments</h1>
+            <hr><br><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card border-info mb-3" style="max-width: 35rem;">
+                <div class="card-header">New Departament</div>
+                <div class="card-body text-info">
+                    <h5 class="card-title">Info card title</h5>
+                    <div class="form-group">
+                        <label for="taName">Name</label>
+                        <input type="text" class="form-control" id="taName">
+                    </div>
+                    <div class="form-group">
+                        <label for="taDesc">Description</label>
+                        <textarea class="form-control" id="taDesc" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-info mb-3" style="max-width: 35rem;">
+                <div class="card-header">New Sub-Departament</div>
+                <div class="card-body text-info">
+                    <h5 class="card-title">Info card title</h5>
+                    <div class="form-group">
+                        <label for="taName1">Name</label>
+                        <input type="text" class="form-control" id="taName1">
+                    </div>
+                    <div class="form-group">
+                        <label for="taDesc1">Description</label>
+                        <textarea class="form-control" id="taDesc1" rows="3"></textarea>
+                    </div>
+                    <p>Departament</p>
+                    <select class="form-control">
+                        <option>Any</option>
+                        <option>Any</option>
+                        <option>Any</option>
+                    </select>
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center" *ngIf="actualizar == true">
+        <div class="col">
+            <div class="card border-info mb-3" style="max-width: 35rem;">
+                <div class="card-header">Update Departament</div>
+                <div class="card-body text-info">
+                    <h5 class="card-title">Info card title</h5>
+                    <div class="form-group">
+                        <label for="taName1">Name</label>
+                        <input type="text" class="form-control" id="taName1">
+                    </div>
+                    <div class="form-group">
+                        <label for="taDesc1">Description</label>
+                        <textarea class="form-control" id="taDesc1" rows="3"></textarea>
+                    </div>
+                    <p>Departament</p>
+                    <select class="form-control">
+                        <option>Any</option>
+                        <option>Any</option>
+                        <option>Any</option>
+                    </select>
+                    <button class="btn btn-primary" (click)="updateDep(false)">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Clothing</td>
+                <td>With supporting text below as a natural lead-in to additional content.</td>
+                <td style="text-align: right;">
+                    <button class="btn btn-info" (click)="actDep(true)">Update</button>
+                    <button class="btn btn-warning">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Shoes</td>
+                <td>With supporting text below as a natural lead-in to additional content.</td>
+                <td style="text-align: right;">
+                    <button class="btn btn-info" (click)="actDep(true)">Update</button>
+                    <button class="btn btn-warning">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>sports</td>
+                <td>With supporting text below as a natural lead-in to additional content.</td>
+                <td style="text-align: right;">
+                    <button class="btn btn-info" (click)="actDep(true)">Update</button>
+                    <button class="btn btn-warning">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
