@@ -8,7 +8,8 @@ import { MyproductsComponent } from './myproducts/myproducts.component';
 import { FeedComponent } from './feed/feed.component';
 import { ProductComponent } from './product/product.component';
 import { DepartamentComponent } from './departament/departament.component';
-import { UsersComponent } from './users/users.component'
+import { UsersComponent } from './users/users.component';
+import { AddcarComponent } from './addcar/addcar.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'feed', component: FeedComponent},
   {path: 'product', component: ProductComponent},
   {path: 'departament', component: DepartamentComponent},
-  {path: 'users', component: UsersComponent}
+  {path: 'users', component: UsersComponent},
+  {path: 'add', component: AddcarComponent},
 ];
 
 @NgModule({

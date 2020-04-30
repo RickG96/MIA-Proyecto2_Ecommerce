@@ -1,3 +1,4 @@
+<app-headerb></app-headerb>
 <div class="container-fluid">
     <div class="row">
         <div class="col-4">
@@ -24,73 +25,15 @@
             <hr>
             <div class="container-md">
                 <div class="row row-cols-3">
-                    <div class="col">
+                    <div class="col" *ngFor="let producto of ELEMENT_DATA">
                         <div class="card" style="width: 18rem; padding-top: 7px;">
-                            <img src="../../assets/fiora0.jpg" class="card-img-top" alt="...">
+                            <img src="{{producto.imagen}}" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">descripcion del producto</p>
-                                <p class="card-text">precio</p>
-                                <p class="card-text">cantidad disp</p>
-                                <p class="card-text">puntuacion</p>
-                                <button class="btn btn-info" (click)="seeProduct()">view <i class="fas fa-eye"></i></button>
-                                <button class="btn btn-dark">add <i class="fas fa-cart-plus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 18rem; padding-top: 7px;">
-                            <img src="../../assets/fiora0.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">descripcion del producto</p>
-                                <p class="card-text">precio</p>
-                                <p class="card-text">cantidad disp</p>
-                                <p class="card-text">puntuacion</p>
-                                <button class="btn btn-info" (click)="seeProduct()">view <i class="fas fa-eye"></i></button>
-                                <button class="btn btn-dark">add <i class="fas fa-cart-plus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 18rem; padding-top: 7px;">
-                            <img src="../../assets/fiora0.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">descripcion del producto</p>
-                                <p class="card-text">precio</p>
-                                <p class="card-text">cantidad disp</p>
-                                <p class="card-text">puntuacion</p>
-                                <button class="btn btn-info" (click)="seeProduct()">view <i class="fas fa-eye"></i></button>
-                                <button class="btn btn-dark">add <i class="fas fa-cart-plus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 18rem; padding-top: 7px;">
-                            <img src="../../assets/fiora0.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">descripcion del producto</p>
-                                <p class="card-text">precio</p>
-                                <p class="card-text">cantidad disp</p>
-                                <p class="card-text">puntuacion</p>
-                                <button class="btn btn-info" (click)="seeProduct()">view <i class="fas fa-eye"></i></button>
-                                <button class="btn btn-dark">add <i class="fas fa-cart-plus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 18rem; padding-top: 7px;">
-                            <img src="../../assets/fiora0.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">descripcion del producto</p>
-                                <p class="card-text">precio</p>
-                                <p class="card-text">cantidad disp</p>
-                                <p class="card-text">puntuacion</p>
-                                <button class="btn btn-info" (click)="seeProduct()">view <i class="fas fa-eye"></i></button>
-                                <button class="btn btn-dark">add <i class="fas fa-cart-plus"></i></button>
+                                <h5 class="card-title">{{producto.nombre}}</h5>
+                                <p class="card-text">{{producto.descripcion}}</p>
+                                <p class="card-text"><span>$ </span>{{producto.precio}}</p>
+                                <p class="card-text">{{producto.cantidad}}<span> units</span></p>
+                                <button class="btn btn-info" (click)="seeProduct(producto)">view <i class="fas fa-eye"></i></button>
                             </div>
                         </div>
                     </div>

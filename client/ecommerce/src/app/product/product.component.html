@@ -1,78 +1,86 @@
+<app-headerb></app-headerb>
 <div class="container">
-    <div class="row justify-content-center row-cols-1">
-        <div class="col">
-            <div class="card">
-                <img src="../../assets/fiora0.jpg" class="card-img-top" alt="...">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="card" style="width: 18rem; padding-top: 7px;">
+                <img src="{{producto.imagen}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <h5 class="card-title">{{producto.nombre}}</h5>
+                    <p class="card-text">{{producto.descripcion}}</p>
+                    <p class="card-text"><span>$ </span>{{producto.precio}}</p>
+                    <p class="card-text">{{producto.cantidad}}<span> units</span></p>
                 </div>
             </div>
-        </div>
-        <!--este es para añadir comentarios-->
-        <div class="col" style="padding-top: 8px;">
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="taComentar">Comment</label>
-                        <textarea class="form-control" id="taComentar"></textarea>
-                    </div>
-                    <form>
+            <!--este es para añadir comentarios-->
+            <div style="width: 18rem; padding-top: 8px;">
+                <div class="card">
+                    <div class="card-body">
                         <div class="form-group">
-                          <label for="formRate">Rate</label>
-                          <input type="range" class="form-control-range" id="formRate">
+                            <label for="taComentar">Comment</label>
+                            <textarea class="form-control" id="taComentar"></textarea>
                         </div>
-                    </form>
-                    <button class="btn btn-info">Send</button>
+                        <form>
+                            <div class="form-group">
+                            <label for="formRate">Rate</label>
+                            <input type="range" class="form-control-range" id="formRate">
+                            </div>
+                        </form>
+                        <button class="btn btn-info">Send</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <!--aqui empiezan los comentarios-->
-        <div class="col" style="padding-top: 8px;">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Comentario</h5>
-                    <p class="card-text">esto es un comentario.</p>
+        <div class="col-6">
+            <h1 class="subtitulo-lp">Comments</h1>
+            <hr>
+            <div class="row row-cols-1">
+                <div class="col" style="padding-top: 8px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Comentario</h5>
+                            <p class="card-text">esto es un comentario.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col" style="padding-top: 8px;">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Comentario</h5>
-                    <p class="card-text">esto es un comentario.</p>
+                <div class="col" style="padding-top: 8px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Comentario</h5>
+                            <p class="card-text">esto es un comentario.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col" style="padding-top: 8px;">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Comentario</h5>
-                    <p class="card-text">esto es un comentario.</p>
+                <div class="col" style="padding-top: 8px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Comentario</h5>
+                            <p class="card-text">esto es un comentario.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col" style="padding-top: 8px;">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Comentario</h5>
-                    <p class="card-text">esto es un comentario.</p>
+                <div class="col" style="padding-top: 8px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Comentario</h5>
+                            <p class="card-text">esto es un comentario.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col" style="padding-top: 8px;">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Comentario</h5>
-                    <p class="card-text">esto es un comentario.</p>
+                <div class="col" style="padding-top: 8px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Comentario</h5>
+                            <p class="card-text">esto es un comentario.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col" style="padding-top: 8px;">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Comentario</h5>
-                    <p class="card-text">esto es un comentario.</p>
+                <div class="col" style="padding-top: 8px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Comentario</h5>
+                            <p class="card-text">esto es un comentario.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
+<app-headerb></app-headerb>
 <div class="container">
-    <div class="row">
+    <div class="row"> 
         <div class="col">
             <h1 class="subtitulo-lp">My Products</h1>
             <hr><br><br>
@@ -20,26 +21,26 @@
                         <hr><br><br>
                         <div class="form-group">
                             <label for="newName">Name Product</label>
-                            <input type="text" class="form-control" id="newName">
+                            <input [(ngModel)]="NEW_PRODUCT.nombre" type="text" class="form-control" id="newName">
                         </div>
                         <div class="form-group">
                             <label for="newPrice">Price</label>
-                            <input type="text" class="form-control" id="newPrice">
+                            <input [(ngModel)]="NEW_PRODUCT.precio" type="text" class="form-control" id="newPrice">
                         </div>
                         <div class="form-group">
                             <label for="newDescription">Description</label>
-                            <input type="text" class="form-control" id="newDescription">
+                            <input [(ngModel)]="NEW_PRODUCT.descripcion" type="text" class="form-control" id="newDescription">
                         </div>
                         <div class="form-group">
                             <label for="newQuantity">Quantity</label>
-                            <input type="number" class="form-control" id="newQuantity">
+                            <input [(ngModel)]="NEW_PRODUCT.cantidad" type="text" class="form-control" id="newQuantity">
                         </div>
                         <div class="form-group">
                             <label for="newColor">Color</label>
-                            <input type="password" class="form-control" id="newColor">
+                            <input [(ngModel)]="NEW_PRODUCT.color" type="text" class="form-control" id="newColor">
                         </div>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile">
+                            <input [(ngModel)]="NEW_PRODUCT.imagen" (change)="onFileChanged($event)" type="file" class="custom-file-input" id="customFile">
                             <label class="custom-file-label" for="customFile" data-browse="Image">Choose File</label>
                         </div>
                         <button class="btn btn-primary" (click)="insertProducto(false)">Submit</button>
@@ -59,23 +60,23 @@
                         <hr><br><br>
                         <div class="form-group">
                             <label for="updateName">Name Product</label>
-                            <input type="text" class="form-control" id="updateName">
+                            <input type="text" [(ngModel)]="NEW_PRODUCT.nombre" class="form-control" id="updateName">
                         </div>
                         <div class="form-group">
                             <label for="updatePrice">Price</label>
-                            <input type="text" class="form-control" id="updatePrice">
+                            <input type="text" [(ngModel)]="NEW_PRODUCT.precio" class="form-control" id="updatePrice">
                         </div>
                         <div class="form-group">
                             <label for="updateDescription">Description</label>
-                            <input type="text" class="form-control" id="updateDescription">
+                            <input type="text" [(ngModel)]="NEW_PRODUCT.descripcion" class="form-control" id="updateDescription">
                         </div>
                         <div class="form-group">
                             <label for="updateQuantity">Quantity</label>
-                            <input type="number" class="form-control" id="updateQuantity">
+                            <input type="text" [(ngModel)]="NEW_PRODUCT.cantidad" class="form-control" id="updateQuantity">
                         </div>
                         <div class="form-group">
                             <label for="updateColor">Color</label>
-                            <input type="password" class="form-control" id="updateColor">
+                            <input type="text" [(ngModel)]="NEW_PRODUCT.color" class="form-control" id="updateColor">
                         </div>
                         <button class="btn btn-primary" (click)="updateProducto(false)">Submit</button>
                     </div>
@@ -86,16 +87,18 @@
     </div>
 </div>
 
-<div class="container-md">
+<div class="container-md" style="padding-top: 10px;">
     <div class="row row-cols-3">
-        <div class="col">
+        <div class="col" *ngFor="let producto of ELEMENT_DATA">
             <div class="card" style="width: 18rem; padding-top: 7px;">
-                <img src="../../assets/fiora0.jpg" class="card-img-top" alt="...">
+                <img src="{{producto.imagen}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">descripcion del producto</p>
-                    <button class="btn btn-primary" (click)="upProducto(true)">Update</button>
-                    <button class="btn btn-danger" (click)="deleteProducto()">Delete</button>
+                    <h5 class="card-title">{{producto.nombre}}</h5>
+                    <p class="card-text">{{producto.descripcion}}</p>
+                    <p class="card-text"><span>$ </span>{{producto.precio}}</p>
+                    <p class="card-text">{{producto.cantidad}}<span> units</span></p>
+                    <button class="btn btn-primary" (click)="upProducto(producto, true)">Update</button>
+                    <button class="btn btn-danger" (click)="deleteProducto(producto.id_producto)">Delete</button>
                 </div>
             </div>
         </div>

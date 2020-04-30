@@ -20,6 +20,7 @@ import { ProductComponent } from './product/product.component';
 import { DepartamentComponent } from './departament/departament.component';
 import { UsersComponent } from './users/users.component';
 import { HeaderbComponent } from './headerb/headerb.component';
+import { AddcarComponent } from './addcar/addcar.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { HeaderbComponent } from './headerb/headerb.component';
     DepartamentComponent,
     UsersComponent,
     HeaderbComponent,
+    AddcarComponent,
   ],
   imports: [
     BrowserModule,
