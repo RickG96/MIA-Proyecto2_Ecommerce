@@ -56,11 +56,11 @@ export class ServiciosService {
   }
   //api productos
   getProductos() {
-    return this.http.get('http://localhost:3000/api/productos')
+    return this.http.get('http://localhost:3000/api/productos').toPromise()
   }
 
   postProductos(producto) {
-    return this.http.post('http://localhost:3000/api/productos', producto, httpOptions)
+    return this.http.post('http://localhost:3000/api/productos', producto, httpOptions).toPromise()
   }
 
   putProductos(producto, id) {
@@ -70,4 +70,45 @@ export class ServiciosService {
   deleteProducto(id) {
     return this.http.delete('http://localhost:3000/api/productos/' + id, httpOptions)
   }
+  //api categorias
+  getCategorias() {
+    return this.http.get('http://localhost:3000/api/categorias')
+  }
+
+  postCategoria(categoria) {
+    return this.http.post('http://localhost:3000/api/categorias', categoria, httpOptions)
+  }
+
+  putCategoria(categoria, id) {
+    return this.http.put('http://localhost:3000/api/categorias/' + id, categoria, httpOptions)
+  }
+
+  deleteCategoria(id) {
+    return this.http.delete('http://localhost:3000/api/categorias/' + id, httpOptions)
+  }
+  //relacion categoria con producto
+  getCatPro() {
+    return this.http.get('http://localhost:3000/api/catprodu')
+  }
+
+  postCatPro(catpro) {
+    return this.http.post('http://localhost:3000/api/catprodu', catpro, httpOptions)
+  }
+  //comentarios
+  getComentarios() {
+    return this.http.get('http://localhost:3000/api/comentarios')
+  }
+
+  postComentario(comentario) {
+    return this.http.post('http://localhost:3000/api/comentarios', comentario, httpOptions)
+  }
+
+  putComentario(comentario, id) {
+    return this.http.put('http://localhost:3000/api/comentarios/' + id, comentario, httpOptions)
+  }
+
+  deleteComentario(id) {
+    return this.http.delete('http://localhost:3000/api/comentarios/' + id, httpOptions)
+  }
+
 }

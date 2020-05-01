@@ -4,21 +4,17 @@
         <div class="col-4">
             <h6>Categories</h6>
             <hr>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    item 1
-                    <ul class="nested">
-                        <li class="list-group-item">item 1.1</li>
-                        <li class="list-group-item">item 1.2</li>
-                        <li class="list-group-item">item 1.3</li>
-                        <li class="list-group-item">item 1.4</li>
-                    </ul>
-                </li>
-                <li class="list-group-item">item 2</li>
-                <li class="list-group-item">item 3</li>
-                <li class="list-group-item">item 4</li>
-                <li class="list-group-item">item 5</li>
-            </ul>
+            <div class="list-group" *ngFor="let element of PADRE">
+                <button type="button" (click)="filtroCategoria(element.id)" class="list-group-item list-group-item-action">
+                    <span><i class="fas fa-folder"></i> </span>
+                    {{element.nombre}}
+                </button>
+                <div class="nested" *ngFor="let el of element.hijos">
+                    <button type="button" (click)="filtroCategoria(el.id)" class="list-group-item list-group-item-action">
+                        <pre>      <i class="fas fa-folder-open"></i> {{el.nombre}}</pre>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="col-8">
             <h1>All Items</h1>

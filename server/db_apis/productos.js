@@ -1,5 +1,4 @@
 const database = require('../services/database')
-const oracledb = require('oracledb')
 
 const baseQuery = 
    `SELECT

@@ -1,4 +1,4 @@
-const productos = require('../db_apis/productos.js')
+const categorias = require('../db_apis/categorias.js')
 
 async function get(req, res, next) {
     try {
@@ -6,7 +6,7 @@ async function get(req, res, next) {
 
         context.id = parseInt(req.params.id, 10)
 
-        const rows = await productos.find(context)
+        const rows = await categorias.find(context)
 
         if(req.params.id) {
             if(rows.length === 1) {
@@ -26,19 +26,15 @@ module.exports.get = get
 
 async function post(req, res, next) {
     try {
-        let producto = {
+        let categoria = {
             nombre: req.body.nombre,
             descripcion: req.body.descripcion,
-            imagen: 'http://localhost:3000/uploads/' + req.body.imagen,
-            precio: req.body.precio,
-            cantidad: req.body.cantidad,
-            color: req.body.color,
-            id_usuario: req.body.id_usuario
+            id_padre: req.body.id_padre
         }
-        
-        producto = await productos.create(producto)
 
-        res.status(201).json(producto)
+        categoria = await categorias.create(categoria)
+
+        res.status(201).json(categoria)
     } catch(err) {
         next(err)
     }
@@ -48,19 +44,15 @@ module.exports.post = post
 
 async function put(req, res, next) {
     try {
-        let producto = {
-            nombre: req.body.nombre,
+        let categoria = {
             descripcion: req.body.descripcion,
-            precio: req.body.precio,
-            cantidad: req.body.cantidad,
-            color: req.body.color,
-            id_producto: req.body.id_producto
+            id_categoria: req.body.id_categoria
         }
 
-        producto = await productos.update(producto)
+        categoria = await categorias.update(categoria)
 
-        if (producto !== null) {
-            res.status(200).json(producto);
+        if (categoria !== null) {
+            res.status(200).json(categoria);
         } else {
             res.status(404).end();
         }
@@ -73,17 +65,17 @@ module.exports.put = put
 
 async function borrar(req, res, next) {
     try {
-        let producto = {}
-        producto.id_producto = parseInt(req.params.id, 10)
+        let categoria = {}
+        categoria.id_categoria = parseInt(req.params.id, 10)
 
-        producto = await productos.borra(producto)
+        categoria = await categorias.borra(categoria)
 
-        if (producto !== null) {
-            res.status(200).json(producto);
+        if (categoria !== null) {
+            res.status(200).json(categoria);
         } else {
             res.status(404).end();
-        } 
-    } catch(err) {
+        }
+    }  catch(err) {
         next(err)
     }
 }

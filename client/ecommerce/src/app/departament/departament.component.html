@@ -6,7 +6,12 @@
             <hr><br><br>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="nuevo == false">
+        <div class="col text-center" style="padding-bottom: 15px;">
+            <button  type="button" (click)="agregarCat()" class="btn btn-color btn-lg">New Departament <i class="fas fa-plus-square"></i></button>
+        </div>
+    </div>
+    <div class="row" *ngIf="nuevo == true">
         <div class="col">
             <div class="card border-info mb-3" style="max-width: 35rem;">
                 <div class="card-header">New Departament</div>
@@ -14,13 +19,13 @@
                     <h5 class="card-title">Info card title</h5>
                     <div class="form-group">
                         <label for="taName">Name</label>
-                        <input type="text" class="form-control" id="taName">
+                        <input [(ngModel)]="NEW_CAT.nombre" type="text" class="form-control" id="taName">
                     </div>
                     <div class="form-group">
                         <label for="taDesc">Description</label>
-                        <textarea class="form-control" id="taDesc" rows="3"></textarea>
+                        <textarea [(ngModel)]="NEW_CAT.descripcion" class="form-control" id="taDesc" rows="3"></textarea>
                     </div>
-                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-primary" (click)="insertCategoria()">Submit</button>
                 </div>
             </div>
         </div>
@@ -31,19 +36,17 @@
                     <h5 class="card-title">Info card title</h5>
                     <div class="form-group">
                         <label for="taName1">Name</label>
-                        <input type="text" class="form-control" id="taName1">
+                        <input [(ngModel)]="NEW_SCAT.nombre" type="text" class="form-control" id="taName1">
                     </div>
                     <div class="form-group">
                         <label for="taDesc1">Description</label>
-                        <textarea class="form-control" id="taDesc1" rows="3"></textarea>
+                        <textarea [(ngModel)]="NEW_SCAT.descripcion" class="form-control" id="taDesc1" rows="3"></textarea>
                     </div>
                     <p>Departament</p>
-                    <select class="form-control">
-                        <option>Any</option>
-                        <option>Any</option>
-                        <option>Any</option>
+                    <select [(ngModel)]="nombre" class="form-control">
+                        <option *ngFor="let categoria of PADRE_CAT">{{categoria.nombre}}</option>
                     </select>
-                    <button class="btn btn-primary">Submit</button>
+                    <button (click)="insertSubCategoria()" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </div>
@@ -53,21 +56,11 @@
             <div class="card border-info mb-3" style="max-width: 35rem;">
                 <div class="card-header">Update Departament</div>
                 <div class="card-body text-info">
-                    <h5 class="card-title">Info card title</h5>
-                    <div class="form-group">
-                        <label for="taName1">Name</label>
-                        <input type="text" class="form-control" id="taName1">
-                    </div>
+                    <h5 class="card-title"><span>Name: </span>{{UPD_CAT.nombre}}</h5>
                     <div class="form-group">
                         <label for="taDesc1">Description</label>
-                        <textarea class="form-control" id="taDesc1" rows="3"></textarea>
+                        <textarea [(ngModel)]="UPD_CAT.descripcion" class="form-control" id="taDesc1" rows="3"></textarea>
                     </div>
-                    <p>Departament</p>
-                    <select class="form-control">
-                        <option>Any</option>
-                        <option>Any</option>
-                        <option>Any</option>
-                    </select>
                     <button class="btn btn-primary" (click)="updateDep(false)">Submit</button>
                 </div>
             </div>
@@ -82,33 +75,15 @@
                 <th scope="col">Description</th>
                 <th scope="col"></th>
               </tr>
-            </thead>
+            </thead> 
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Clothing</td>
-                <td>With supporting text below as a natural lead-in to additional content.</td>
+              <tr *ngFor="let categoria of ELEMENT_DATA; index as i">
+                <th scope="row">{{i}}</th>
+                <td>{{categoria.nombre}}</td>
+                <td>{{categoria.descripcion}}</td>
                 <td style="text-align: right;">
-                    <button class="btn btn-info" (click)="actDep(true)">Update</button>
-                    <button class="btn btn-warning">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Shoes</td>
-                <td>With supporting text below as a natural lead-in to additional content.</td>
-                <td style="text-align: right;">
-                    <button class="btn btn-info" (click)="actDep(true)">Update</button>
-                    <button class="btn btn-warning">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>sports</td>
-                <td>With supporting text below as a natural lead-in to additional content.</td>
-                <td style="text-align: right;">
-                    <button class="btn btn-info" (click)="actDep(true)">Update</button>
-                    <button class="btn btn-warning">Delete</button>
+                    <button class="btn btn-info" (click)="actDep(categoria, true)">Update</button>
+                    <button class="btn btn-warning" (click)="deleteCategoria(categoria.id_categoria)">Delete</button>
                 </td>
               </tr>
             </tbody>

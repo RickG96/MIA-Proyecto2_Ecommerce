@@ -11,11 +11,10 @@
             <button  type="button" class="btn btn-color btn-lg" (click)="addProducto(true)">New product <i class="fas fa-tshirt"></i></button>
         </div>
     </div>
-    <div *ngIf="nuevoProducto == true;" class="row">
+    <div *ngIf="nuevoProducto == true;" class="row centrar">
         <div class="col">
-            <div class="card mb-3 centrar" style="max-width: 540px; margin-top: 10%;">
-                <div class="row no-gutters">
-                  <div class="col-md-8">
+            <div class="card mb-3" style="max-width: 540px; margin-top: 10%;">
+                
                     <div class="card-body">
                         <h5 class="card-title">New Product</h5>
                         <hr><br><br>
@@ -43,10 +42,12 @@
                             <input [(ngModel)]="NEW_PRODUCT.imagen" (change)="onFileChanged($event)" type="file" class="custom-file-input" id="customFile">
                             <label class="custom-file-label" for="customFile" data-browse="Image">Choose File</label>
                         </div>
+                        <p>Departament</p>
+                        <select [(ngModel)]="nombre" class="form-control">
+                            <option *ngFor="let categoria of CATEGORIAS">{{categoria.nombre}}</option>
+                        </select>
                         <button class="btn btn-primary" (click)="insertProducto(false)">Submit</button>
                     </div>
-                  </div>
-                </div>
             </div>
         </div>
     </div>
