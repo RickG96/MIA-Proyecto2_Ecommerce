@@ -12,6 +12,7 @@ export class SigninComponent implements OnInit {
 
   encontrado: boolean = false;
   USUARIOS: any = [];
+  CARRITOS: any = [];
   USER: any = {
     correo: "",
     contrasenia: ""
@@ -21,6 +22,7 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+    this.getCarritos();
   }
 
   login() {
@@ -29,6 +31,11 @@ export class SigninComponent implements OnInit {
       if(usuario.correo == this.USER.correo && usuario.contrasenia == this.USER.contrasenia) {
         this.encontrado = true;
         this.servicio.setLog(usuario);
+        this.CARRITOS.forEach(carrito => {
+          if(carrito.id_usuario == usuario.id_usuario) {
+            this.servicio.setCarrito(carrito)
+          }
+        });
       }
     });
     if(this.encontrado) {
@@ -43,6 +50,13 @@ export class SigninComponent implements OnInit {
       .subscribe(data => {
         this.USUARIOS = data;
         this.USUARIOS = this.USUARIOS.filter(usuario => usuario.estatus === 1);
+      })
+  }
+
+  getCarritos() {
+    this.servicio.getCarritos()
+      .subscribe(data => {
+        this.CARRITOS = data;
       })
   }
 

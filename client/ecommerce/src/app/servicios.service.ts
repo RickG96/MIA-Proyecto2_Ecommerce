@@ -16,8 +16,18 @@ export class ServiciosService {
 
   USUARIO_LOG: any;
   PRODUCTO_VER: any;
+  CARRITO_LOG: any;
 
   constructor(private http: HttpClient, private router: Router) { }
+
+  setCarrito(carrito) {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+  }
+
+  getCarrito() {
+    this.CARRITO_LOG = JSON.parse(localStorage.getItem('carrito'));
+    return this.CARRITO_LOG;
+  }
 
   setLog(usuario) {
     localStorage.setItem('usuario', JSON.stringify(usuario));
@@ -110,5 +120,32 @@ export class ServiciosService {
   deleteComentario(id) {
     return this.http.delete('http://localhost:3000/api/comentarios/' + id, httpOptions)
   }
+  //carritos
+  getCarritos() {
+    return this.http.get('http://localhost:3000/api/carritos')
+  }
 
+  postCarrito(carrito) {
+    return this.http.post('http://localhost:3000/api/carritos', carrito, httpOptions)
+  }
+
+  putCarrito(carrito, id) {
+    return this.http.put('http://localhost:3000/api/carritos/' + id, carrito, httpOptions)
+  }
+
+  deleteCarrito(id) {
+    return this.http.delete('http://localhost:3000/api/carritos/' + id, httpOptions)
+  }
+  //detalle entre carritos y productos
+  getDetallesCP() {
+    return this.http.get('http://localhost:3000/api/detallecarritos')
+  }
+
+  postDetalleCP(detalle) {
+    return this.http.post('http://localhost:3000/api/detallecarritos', detalle, httpOptions)
+  }
+
+  deleteDetalleCP(id) {
+    return this.http.delete('http://localhost:3000/api/detallecarritos/' + id, httpOptions)
+  }
 }

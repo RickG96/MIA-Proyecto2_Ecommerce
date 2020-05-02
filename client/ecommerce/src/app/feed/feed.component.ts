@@ -21,6 +21,8 @@ export class FeedComponent implements OnInit {
     this.getProductos();
     this.getCategorias();
     this.getRel();
+    //console.log(this.servicio.getCarrito())
+    //console.log(this.servicio.getLog())
   }
 
   public getRel() {

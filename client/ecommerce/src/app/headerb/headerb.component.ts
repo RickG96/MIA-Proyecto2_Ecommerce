@@ -9,6 +9,7 @@ import { ServiciosService } from '../servicios.service';
 export class HeaderbComponent implements OnInit {
 
   USUARIO: any = {};
+  CARRITO: any = {};
 
   constructor(private servicio: ServiciosService) { }
 
@@ -16,7 +17,8 @@ export class HeaderbComponent implements OnInit {
   }
 
   logOut() {
-    this.servicio.setLog(this.USUARIO)
+    this.servicio.setLog(this.USUARIO);
+    this.servicio.setCarrito(this.CARRITO);
   }
 
 }
