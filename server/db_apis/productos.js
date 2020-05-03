@@ -2,26 +2,24 @@ const database = require('../services/database')
 
 const baseQuery = 
    `SELECT
-        id_producto "id_producto",
-        nombre "nombre",
-        descripcion "descripcion",
-        imagen "imagen",
-        precio "precio",
-        fecha_pubi "fecha",
-        cantidad "cantidad",
-        color "color",
-        id_usuario "id_usuario",
-        estatus "estatus"
-    FROM producto`
+        p.id_producto "id_producto",
+        p.nombre "nombre",
+        p.descripcion "descripcion",
+        p.imagen "imagen",
+        p.precio "precio",
+        p.fecha_pubi "fecha",
+        p.cantidad "cantidad",
+        p.color "color",
+        p.id_usuario "id_usuario",
+        p.estatus "estatus",
+        c.nombre "duenio"
+    FROM producto p, usuarios c
+    WHERE p.id_usuario = c.id_usuario`
 
 async function find(context) {
     let query = baseQuery
     const binds = {}
 
-    if(context.id) {
-        binds.id_producto = context.id
-        query += `\nWHERE id_producto = :id_producto`
-    }
 
     const result = await database.simpleExecute(query, binds)
 

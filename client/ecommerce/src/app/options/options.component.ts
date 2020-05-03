@@ -1,4 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { ServiciosService } from '../servicios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-options',
@@ -8,8 +10,12 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 export class OptionsComponent implements OnInit {
 
   actualizar = false;
+  usuario: any;
+  constructor(private servicio: ServiciosService, private router: Router) { }
 
   ngOnInit() {
+    this.usuario = this.servicio.getLog();
+    console.log(this.usuario)
   } 
 
   updateUser(mostrar?: boolean) {
@@ -19,6 +25,18 @@ export class OptionsComponent implements OnInit {
 
   update(mostrar?: boolean) {
     this.actualizar = mostrar;
-    console.log("ok")
+    this.servicio.putUsuario(this.usuario, this.usuario.id_usuario)
+      .subscribe(() => {
+        this.servicio.setLog(this.usuario)
+      })
+  }
+
+  deleteUser() {
+    this.servicio.deleteUsuario(this.usuario.id_usuario)
+      .subscribe(() => {
+        this.servicio.setLog({});
+        this.servicio.setCarrito({});
+        this.router.navigateByUrl('/home');
+      })
   }
 }

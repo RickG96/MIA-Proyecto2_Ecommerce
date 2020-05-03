@@ -52,6 +52,7 @@ async function put(req, res, next) {
             contrasenia: req.body.contrasenia,
             telefono: req.body.telefono,
             direccion: req.body.direccion,
+            credito: req.body.credito,
             id_usuario: parseInt(req.params.id, 10)
         }
         usuario = await usuarios.update(usuario)

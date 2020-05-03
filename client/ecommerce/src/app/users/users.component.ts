@@ -18,6 +18,7 @@ export class UsersComponent implements OnInit {
     contrasenia: "",
     telefono: "",
     direccion: "",
+    credito: "",
   }
 
   constructor(private servicio: ServiciosService) { }
@@ -35,6 +36,7 @@ export class UsersComponent implements OnInit {
     this.UP_USER.contrasenia = usuario.contrasenia;
     this.UP_USER.telefono = usuario.telefono;
     this.UP_USER.direccion = usuario.direccion;
+    this.UP_USER.credito = usuario.credito;
   }
 
   updateUser(valor?: boolean, id_usuario?: number) {

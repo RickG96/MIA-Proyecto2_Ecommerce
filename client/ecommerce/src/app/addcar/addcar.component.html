@@ -6,8 +6,8 @@
                 <img src="{{producto.imagen}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{producto.nombre}}</h5>
-                    <p class="card-text"><span>Price: </span>{{producto.descripcion}}</p>
-                    <p class="card-text"><span>$ </span>{{producto.precio}}</p>
+                    <p class="card-text"><span>Description: </span>{{producto.descripcion}}</p>
+                    <p class="card-text"><span>Price: $</span>{{producto.precio}}</p>
                     <p class="card-text">{{producto.cantidad}}<span> units</span></p>
                     
                     <button class="btn btn-dark" (click)="reseniaProducto()">review <i class="far fa-star"></i></button>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="col-8">
-            <h1 class="subtitulo-lp">My car</h1>
+            <h1 class="subtitulo-lp">My cart</h1>
             <hr>
             <div class="row" *ngFor="let element of MI_CARRITO">
                 <div class="card w-75">
@@ -29,6 +29,14 @@
                         </address>
                     </div>
                     <button class="btn btn-warning" (click)="borrarDetalle(element.id_detalle)">delete <i class="fas fa-minus-square"></i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card w-75">
+                    <div class="card-body text-center">
+                        <p>total: ${{carrito.total}}</p>
+                    </div>
+                    <button class="btn btn-info" (click)="comprarCarrito()">Buy Car <i class="fas fa-money-bill-wave"></i></button>
                 </div>
             </div>
         </div>

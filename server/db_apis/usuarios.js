@@ -59,7 +59,8 @@ const updateSql =
         apellido = :apellido,
         contrasenia = :contrasenia,
         telefono = :telefono,
-        direccion = :direccion
+        direccion = :direccion,
+        credito = :credito
     WHERE id_usuario = :id_usuario`
 
 async function update(emp) {

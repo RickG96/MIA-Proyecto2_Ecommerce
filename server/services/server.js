@@ -6,6 +6,7 @@ const database = require('./database')
 const morgan = require('morgan')
 const multer = require('multer')
 const bodyParser = require('body-parser')
+const nodemailer = require('nodemailer') //nuevo
 
 let httpServer
 
@@ -47,6 +48,20 @@ function initialize() {
           res.end()
         })
 
+        ///////
+        app.post('/correoventa', (req, res, next) => {
+          const cuerpo = req.body;
+          armarEnviar(cuerpo)
+          res.end()
+        })
+
+        app.post('/correocompra', (req, res, next) => {
+          const cuerpo = req.body
+          armarCompra(cuerpo)
+          res.end()
+        })
+        ///////
+
         httpServer.listen(webServerConfig.port)
             .on('listening', () => {
                 console.log(`Servidor escuchando en localhost:${webServerConfig.port}`)
@@ -85,4 +100,65 @@ function reviveJson(key, value) {
   } else {
     return value
   }
+}
+
+async function armarCompra(usuario) {
+  let correo = usuario.correo
+  let productos = usuario.listado
+  let contenido = await formarHtml(productos)
+  enviarVenta(correo, contenido, 'Your bill 💲')
+} 
+
+async function armarEnviar(lista) {
+  lista.forEach(async(element) => {
+    const correo = element.email
+    const contenido = await formarHtml(element.productos)
+    enviarVenta(correo, contenido, 'Your products have been sold 😊')
+  });
+}
+
+function formarHtml(productos) {
+  let total = 0;
+  let aux = 1;
+  let tabla = '<table><tr><th>#</th><th>nombre</th><th>precio</th></tr>'
+  productos.forEach(producto => {
+    tabla += '<tr>'
+    tabla += '<th>' + aux + '</th>'
+    tabla += '<th>' + producto.nombre + '</th>'
+    tabla += '<th>' + producto.precio + '</th>'
+    tabla += '</tr>'
+    aux++
+    total = total + parseInt(producto.precio, 10)
+  });
+  tabla += '</table><h3>Total: $' + total + '</h3>'
+  return tabla
+}
+
+async function enviarVenta(correo, html, asunto) {
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: 'rickgamer96@gmail.com', // generated ethereal user
+        pass: 'nintendo96' // generated ethereal password
+    }
+  });
+
+  let info =  {
+    from: 'rickgamer96@gmail.com', // sender address
+    to: correo, // list of receivers
+    text: 'Do not answer this email', // plain text body
+    subject: asunto, // Subject line
+    html: html
+  }
+
+  transporter.sendMail(info, function(error, info) {
+    if(error) {
+      console.log(error)
+    } else {
+      console.log('enviado con exito')
+    }
+  })
+
 }

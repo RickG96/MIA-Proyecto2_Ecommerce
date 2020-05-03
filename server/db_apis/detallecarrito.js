@@ -8,6 +8,7 @@ const baseQuery =
         p.precio "precio",
         p.nombre "nombre",
         p.imagen "imagen",
+        p.id_usuario "id_usuario",
         d.estado "estado"
     from detalle_carrito d, producto p
     where d.id_producto = p.id_producto`

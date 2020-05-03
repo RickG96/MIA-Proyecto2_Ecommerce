@@ -52,6 +52,14 @@ export class ServiciosService {
     formData.append('userImage', imagenSubida);
     return this.http.post('http://localhost:3000/imagenusuario', formData);
   }
+
+  correoVenta(listado) {
+    return this.http.post('http://localhost:3000/correoventa', listado, httpOptions)
+  }
+
+  correoCompra(listado) {
+    return this.http.post('http://localhost:3000/correocompra', listado, httpOptions)
+  }
   //api usuarios
   getUsuarios() {
     return this.http.get('http://localhost:3000/api/usuarios');
