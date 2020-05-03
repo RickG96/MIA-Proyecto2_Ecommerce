@@ -39,6 +39,7 @@ export class SigninComponent implements OnInit {
       }
     });
     if(this.encontrado) {
+      this.servicio.setLogued(true);
       this.router.navigateByUrl('/feed');
     } else {
       alert("ERROR");

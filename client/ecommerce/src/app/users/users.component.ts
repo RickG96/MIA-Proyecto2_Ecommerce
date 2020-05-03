@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiciosService } from '../servicios.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -10,6 +10,8 @@ import { ServiciosService } from '../servicios.service';
 export class UsersComponent implements OnInit {
 
   actualizar = false;
+  login: any;
+  usuario: any;
   ELEMENT_DATA: any = [];
   UP_USER: any = {
     id_usuario: "",
@@ -21,9 +23,14 @@ export class UsersComponent implements OnInit {
     credito: "",
   }
 
-  constructor(private servicio: ServiciosService) { }
+  constructor(private servicio: ServiciosService, private router: Router) { }
 
   ngOnInit() {
+    this.usuario = this.servicio.getLog();
+    this.login = this.servicio.getLogued();
+    if(this.login == false || this.usuario.tipo_usuario != 1) {
+      this.router.navigateByUrl('/denied');
+    }
     this.getUsers();
   }
 

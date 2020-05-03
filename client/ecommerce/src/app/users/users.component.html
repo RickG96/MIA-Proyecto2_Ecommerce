@@ -1,3 +1,4 @@
+<app-headerb></app-headerb>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -99,8 +100,8 @@
               </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let usuario of ELEMENT_DATA">
-                    <th scope="row">{{usuario.id_usuario}}</th>
+                <tr *ngFor="let usuario of ELEMENT_DATA; let i = index">
+                    <th scope="row">{{i+1}}</th>
                     <td>{{usuario.nombre}}</td>
                     <td>{{usuario.apellido}}</td>
                     <td>{{usuario.correo}}</td>

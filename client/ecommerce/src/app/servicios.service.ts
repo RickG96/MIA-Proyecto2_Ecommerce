@@ -17,8 +17,18 @@ export class ServiciosService {
   USUARIO_LOG: any;
   PRODUCTO_VER: any;
   CARRITO_LOG: any;
+  LOGUED: any;
 
   constructor(private http: HttpClient, private router: Router) { }
+
+  setLogued(valor: boolean) {
+    localStorage.setItem('logued', JSON.stringify(valor))
+  }
+
+  getLogued() {
+    this.LOGUED = JSON.parse(localStorage.getItem('logued'));
+    return this.LOGUED;
+  }
 
   setCarrito(carrito) {
     localStorage.setItem('carrito', JSON.stringify(carrito));

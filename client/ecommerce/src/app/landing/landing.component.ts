@@ -12,6 +12,7 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.servicio.getLog());
+    this.servicio.setLogued(false);
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiciosService } from '../servicios.service';
+import { Router } from '@angular/router';
 import { promise } from 'protractor';
 
 @Component({
@@ -34,9 +35,15 @@ export class MyproductsComponent implements OnInit {
     id_categoria: null,
     id_producto: 0
   }
-  constructor(private servicio: ServiciosService) { }
+  login: any;
+  constructor(private servicio: ServiciosService, private router: Router) { }
 
   ngOnInit() {
+    this.usuario = this.servicio.getLog();
+    this.login = this.servicio.getLogued();
+    if(this.login == false || this.usuario.tipo_usuario != 3) {
+      this.router.navigateByUrl('/denied')
+    }
     this.getProductos();
     this.getCategorias();
   }

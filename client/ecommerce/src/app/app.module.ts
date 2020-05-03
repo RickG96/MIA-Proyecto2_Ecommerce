@@ -21,6 +21,8 @@ import { DepartamentComponent } from './departament/departament.component';
 import { UsersComponent } from './users/users.component';
 import { HeaderbComponent } from './headerb/headerb.component';
 import { AddcarComponent } from './addcar/addcar.component';
+import { DeniedComponent } from './denied/denied.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { AddcarComponent } from './addcar/addcar.component';
     UsersComponent,
     HeaderbComponent,
     AddcarComponent,
+    DeniedComponent,
+    ReportsComponent,
   ],
   imports: [
     BrowserModule,

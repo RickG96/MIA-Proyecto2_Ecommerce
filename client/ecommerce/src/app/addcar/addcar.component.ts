@@ -12,6 +12,7 @@ export class AddcarComponent implements OnInit {
   producto: any;
   carrito: any;
   usr: any;
+  login: any;
   MI_CARRITO: any = [];
   USUARIOS: any = [];
   detalle: any = {
@@ -25,6 +26,10 @@ export class AddcarComponent implements OnInit {
     this.producto = this.servicio.getProductoVer();
     this.carrito = this.servicio.getCarrito();
     this.usr = this.servicio.getLog();
+    this.login = this.servicio.getLogued();
+    if(this.login == false || this.usr.tipo_usuario != 3) {
+      this.router.navigateByUrl('/denied')
+    }
     this.getDetalleCarrito();
     this.getUsuarios();
   }

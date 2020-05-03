@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiciosService } from '../servicios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -10,6 +11,7 @@ export class ProductComponent implements OnInit {
 
   producto: any;
   usuario: any;
+  login: any;
   COMENTARIOS: any = [];
   comentario: any = {
     titulo: "",
@@ -24,10 +26,14 @@ export class ProductComponent implements OnInit {
     id_comentario: 0,
   }
 
-  constructor(private servicio: ServiciosService) { }
+  constructor(private servicio: ServiciosService, private router: Router) { }
 
   ngOnInit() {
+    this.login = this.servicio.getLogued();
     this.usuario = this.servicio.getLog();
+    if(this.login == false || this.usuario.tipo_usuario != 3) {
+      this.router.navigateByUrl('/denied')
+    }
     this.producto = this.servicio.getProductoVer();
     this.getComentarios();
     if(this.producto.id_usuario == this.usuario.id_usuario) this.esAutor = true;

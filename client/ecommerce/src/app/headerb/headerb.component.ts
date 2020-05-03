@@ -10,10 +10,12 @@ export class HeaderbComponent implements OnInit {
 
   USUARIO: any = {};
   CARRITO: any = {};
+  usuario: any;
 
   constructor(private servicio: ServiciosService) { }
 
   ngOnInit() {
+    this.usuario = this.servicio.getLog();
   }
 
   logOut() {

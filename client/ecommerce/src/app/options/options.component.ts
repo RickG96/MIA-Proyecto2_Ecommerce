@@ -10,10 +10,15 @@ import { Router } from '@angular/router';
 export class OptionsComponent implements OnInit {
 
   actualizar = false;
+  login: any;
   usuario: any;
   constructor(private servicio: ServiciosService, private router: Router) { }
 
   ngOnInit() {
+    this.login = this.servicio.getLogued();
+    if(this.login == false) {
+      this.router.navigateByUrl('/denied');
+    }
     this.usuario = this.servicio.getLog();
     console.log(this.usuario)
   } 

@@ -14,6 +14,8 @@ export class FeedComponent implements OnInit {
   PADRE: any = [];
   AUXILIAR: any = [];
   RELACION: any = [];
+  login: any;
+  usuario: any;
 
   constructor(private servicio: ServiciosService, private router: Router) { }
 
@@ -21,8 +23,8 @@ export class FeedComponent implements OnInit {
     this.getProductos();
     this.getCategorias();
     this.getRel();
-    //console.log(this.servicio.getCarrito())
-    //console.log(this.servicio.getLog())
+    this.usuario = this.servicio.getLog();
+    this.login = this.servicio.getLogued();
   }
 
   public getRel() {

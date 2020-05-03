@@ -10,6 +10,8 @@ import { ProductComponent } from './product/product.component';
 import { DepartamentComponent } from './departament/departament.component';
 import { UsersComponent } from './users/users.component';
 import { AddcarComponent } from './addcar/addcar.component';
+import { DeniedComponent } from './denied/denied.component';
+import { ReportsComponent } from './reports/reports.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
   {path: 'departament', component: DepartamentComponent},
   {path: 'users', component: UsersComponent},
   {path: 'add', component: AddcarComponent},
+  {path: 'denied', component: DeniedComponent},
+  {path: 'reports', component: ReportsComponent}
 ];
 
 @NgModule({
