@@ -12,7 +12,9 @@ import { UsersComponent } from './users/users.component';
 import { AddcarComponent } from './addcar/addcar.component';
 import { DeniedComponent } from './denied/denied.component';
 import { ReportsComponent } from './reports/reports.component';
-
+import { ChatComponent } from './chat/chat.component';
+import { SuccesComponent } from './succes/succes.component';
+import { ForguetComponent } from './forguet/forguet.component';
 
 const routes: Routes = [
   {path: 'login', component: SigninComponent},
@@ -26,7 +28,10 @@ const routes: Routes = [
   {path: 'users', component: UsersComponent},
   {path: 'add', component: AddcarComponent},
   {path: 'denied', component: DeniedComponent},
-  {path: 'reports', component: ReportsComponent}
+  {path: 'reports', component: ReportsComponent},
+  {path: 'chat', component: ChatComponent},
+  {path: 'success', component: SuccesComponent},
+  {path: 'forget', component: ForguetComponent}
 ];
 
 @NgModule({

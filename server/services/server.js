@@ -1,5 +1,5 @@
-const http = require('http')
 const express = require('express')
+const http = require('http')
 const webServerConfig = require('../config/server')
 const router = require('./router')
 const database = require('./database')
@@ -8,13 +8,15 @@ const multer = require('multer')
 const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer') //nuevo
 
+
 let httpServer
 
 function initialize() {
     return new Promise((resolve, reject) => {
         const app = express()
         httpServer = http.createServer(app)
-
+        //const io = require('socket.io')(httpServer)
+        
         const storage = multer.diskStorage({
           destination: (req, res, callback) => {
               callback(null, './uploads')
@@ -60,6 +62,24 @@ function initialize() {
           armarCompra(cuerpo)
           res.end()
         })
+
+        app.post('/confirmacion', (req, res, next) => {
+          const usuario = req.body
+          enviarConfirmacion(usuario.correo)
+          res.end()
+        })
+
+        app.post('/restablecer', (req, res, next) => {
+          const usuario = req.body
+          nuevaContrasenia(usuario)
+          res.end()
+        })
+
+        /*io.on('connection', (socket) => {
+          console.log('user connected')
+
+          socket.emit('test event', 'here is some data')
+        })*/
         ///////
 
         httpServer.listen(webServerConfig.port)
@@ -151,6 +171,64 @@ async function enviarVenta(correo, html, asunto) {
     text: 'Do not answer this email', // plain text body
     subject: asunto, // Subject line
     html: html
+  }
+
+  transporter.sendMail(info, function(error, info) {
+    if(error) {
+      console.log(error)
+    } else {
+      console.log('enviado con exito')
+    }
+  })
+
+}
+
+async function enviarConfirmacion(correo) {
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: 'rickgamer96@gmail.com', // generated ethereal user
+        pass: 'nintendo96' // generated ethereal password
+    }
+  });
+
+  let info =  {
+    from: 'rickgamer96@gmail.com', // sender address
+    to: correo, // list of receivers
+    text: 'Do not answer this email', // plain text body
+    subject: 'Email confirmation', // Subject line
+    html: '<h1>Welcome to alie store</h1><p>Follow the link to confirmate your password</p><a href="http://localhost:4200/success">Confirm!</a>'
+  }
+
+  transporter.sendMail(info, function(error, info) {
+    if(error) {
+      console.log(error)
+    } else {
+      console.log('enviado con exito')
+    }
+  })
+
+}
+
+async function nuevaContrasenia(usuario) {
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: 'rickgamer96@gmail.com', // generated ethereal user
+        pass: 'nintendo96' // generated ethereal password
+    }
+  });
+
+  let info =  {
+    from: 'rickgamer96@gmail.com', // sender address
+    to: usuario.correo, // list of receivers
+    text: 'Do not answer this email', // plain text body
+    subject: 'New Password', // Subject line
+    html: '<h1>New password Alie store</h1><p>Usuario: ' + usuario.correo + '</p><p>Contraseña nueva: ' + usuario.contrasenia + '</p>'
   }
 
   transporter.sendMail(info, function(error, info) {

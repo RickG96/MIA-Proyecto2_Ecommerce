@@ -10,6 +10,7 @@ const detalles = require('../controllers/detallecarrito')
 // servicios para usuarios, productos, etc
 router.route('/usuarios/:id?')
     .get(usuarios.get)
+    .post(usuarios.post)
     .delete(usuarios.borrar)
     .put(usuarios.put)
 

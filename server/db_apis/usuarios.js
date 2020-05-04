@@ -75,3 +75,46 @@ async function update(emp) {
 }
 
 module.exports.update = update
+
+const createSql = 
+   `INSERT INTO usuarios(
+        nombre,
+        apellido,
+        correo,
+        contrasenia,
+        telefono,
+        direccion,
+        fotografia,
+        genero,
+        fecha_nacimiento,
+        fecha_registro,
+        tipo_usuario,
+        estatus,
+        credito,
+        membresia
+    ) VALUES (
+        :nombre,
+        :apellido,
+        :correo,
+        :contrasenia,
+        :telefono,
+        :direccion,
+        :fotografia,
+        :genero,
+        :fecha_nacimiento,
+        TO_CHAR(SYSDATE, 'DD-MM-YYYY'),
+        :tipo_usuario,
+        1,
+        :credito,
+        :membresia
+    )`
+
+async function create(emp) {
+    const usuario = Object.assign({}, emp)
+
+    const result = await database.simpleExecute(createSql, usuario)
+
+    return usuario
+}
+
+module.exports.create = create

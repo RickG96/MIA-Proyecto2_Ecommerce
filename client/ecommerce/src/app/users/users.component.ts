@@ -22,6 +22,21 @@ export class UsersComponent implements OnInit {
     direccion: "",
     credito: "",
   }
+  NUEVO: any = {
+    nombre: "",
+    apellido: "",
+    correo: "",
+    contrasenia: "",
+    telefono: "",
+    direccion: "",
+    fotografia: "",
+    genero: "",
+    fecha_nacimiento: "",
+    tipo_usuario: 0,
+    credito: null,
+    membresia: null
+  }
+  tipo: any = ""; //tipo de usuario  
 
   constructor(private servicio: ServiciosService, private router: Router) { }
 
@@ -69,5 +84,30 @@ export class UsersComponent implements OnInit {
         console.log('ok')
         this.getUsers();
       })
+  }
+
+  onFileChanged(event) {
+    this.NUEVO.avatar = event.target.files[0]
+  }
+
+  insertarUsuario() {
+    const strImg = this.NUEVO.fotografia;
+    const foto = strImg.split("\\",4);
+    this.NUEVO.fotografia = foto[2];
+    this.servicio.postUsuario(this.NUEVO)
+      .subscribe(() => this.getUsers());
+    this.servicio.uploadImage(this.NUEVO.avatar)
+      .subscribe(() => console.log('ok'));
+    this.NUEVO.nombre = "";
+    this.NUEVO.apellido = "";
+    this.NUEVO.correo = "";
+    this.NUEVO.contrasenia = "";
+    this.NUEVO.fecha_nacimiento = "";
+    this.NUEVO.genero = "";
+    this.NUEVO.telefono = "";
+    this.NUEVO.direccion = "";
+    this.NUEVO.tipo_usuario = 0;
+    this.NUEVO.fotografia = "";
+    delete this.NUEVO.avatar;
   }
 }

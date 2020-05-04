@@ -67,3 +67,30 @@ async function put(req, res, next) {
 }
 
 module.exports.put = put
+
+async function post(req, res, next) {
+    try {
+        let usuario = {
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
+            correo: req.body.correo,
+            contrasenia: req.body.contrasenia,
+            telefono: req.body.telefono,
+            direccion: req.body.direccion,
+            fotografia: 'http://localhost:3000/uploads/' + req.body.fotografia, 
+            genero: req.body.genero,
+            fecha_nacimiento: req.body.fecha_nacimiento,
+            tipo_usuario: req.body.tipo_usuario,
+            credito: req.body.credito,
+            membresia: req.body.membresia
+        }
+
+        usuario = await usuarios.create(usuario)
+
+        res.status(201).json(usuario)
+    } catch(err) {
+        next(err)
+    }
+}
+
+module.exports.post = post

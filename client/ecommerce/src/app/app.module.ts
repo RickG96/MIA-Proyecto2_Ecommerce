@@ -23,6 +23,9 @@ import { HeaderbComponent } from './headerb/headerb.component';
 import { AddcarComponent } from './addcar/addcar.component';
 import { DeniedComponent } from './denied/denied.component';
 import { ReportsComponent } from './reports/reports.component';
+import { ChatComponent } from './chat/chat.component';
+import { SuccesComponent } from './succes/succes.component';
+import { ForguetComponent } from './forguet/forguet.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { ReportsComponent } from './reports/reports.component';
     AddcarComponent,
     DeniedComponent,
     ReportsComponent,
+    ChatComponent,
+    SuccesComponent,
+    ForguetComponent,
   ],
   imports: [
     BrowserModule,

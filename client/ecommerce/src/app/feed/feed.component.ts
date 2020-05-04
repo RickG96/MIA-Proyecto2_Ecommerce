@@ -16,7 +16,7 @@ export class FeedComponent implements OnInit {
   RELACION: any = [];
   login: any;
   usuario: any;
-
+  filtro: any = "";
   constructor(private servicio: ServiciosService, private router: Router) { }
 
   ngOnInit() {
@@ -94,4 +94,48 @@ export class FeedComponent implements OnInit {
     this.router.navigateByUrl('/add');
   }
 
+  asc: boolean;
+  des: boolean;
+
+  public ascendente() {
+    if(!this.asc) {
+      this.ELEMENT_DATA = this.ELEMENT_DATA.reverse();
+      this.asc = true
+      this.des = false;
+    }
+  }
+
+  public descendente() {
+    if(!this.des) {
+      this.ELEMENT_DATA = this.ELEMENT_DATA.reverse();
+      this.des = true;
+      this.asc = false;
+    }
+  }
+
+  public porFecha() {
+    this.ELEMENT_DATA = this.ELEMENT_DATA.sort((a,b) => a.fecha.localeCompare(b.fecha))
+    this.asc = true;
+    this.des = false;
+  }
+
+  public porPrecio() {
+    this.ELEMENT_DATA = this.ELEMENT_DATA.sort((a,b) => {
+      return +a.precio - +b.precio;
+    })
+    this.asc = true;
+    this.des = false;
+  }
+
+  public todos() {
+    this.ELEMENT_DATA = this.AUXILIAR;
+  }
+
+  public filtrar() {
+    const regexFiltro = new RegExp(this.filtro, "g");
+    console.log(regexFiltro.toString())
+    this.ELEMENT_DATA = this.AUXILIAR.filter(element => {
+      return Boolean(regexFiltro.test(element.nombre))
+    })
+  }
 }

@@ -70,9 +70,21 @@ export class ServiciosService {
   correoCompra(listado) {
     return this.http.post('http://localhost:3000/correocompra', listado, httpOptions)
   }
+
+  correoConfirmacion(correo) {
+    return this.http.post('http://localhost:3000/confirmacion', correo, httpOptions)
+  }
+
+  correoContra(usuario) {
+    return this.http.post('http://localhost:3000/restablecer', usuario, httpOptions)
+  }
   //api usuarios
   getUsuarios() {
     return this.http.get('http://localhost:3000/api/usuarios');
+  }
+
+  postUsuario(usuario) {
+    return this.http.post('http://localhost:3000/api/usuarios', usuario, httpOptions)
   }
 
   deleteUsuario(id) {

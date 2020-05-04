@@ -1,16 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-header">
-  <a class="navbar-brand" href="/home">E-COMMERCE</a>
+  <a class="navbar-brand" href="/settings"><img src="{{usuario.fotografia}}" alt="producto" style="width: 35px;height: 35px; object-fit: none;border-radius: 50%;"><span> {{usuario.nombre}}</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="/feed">Products</a>
       <a class="nav-item nav-link" *ngIf="usuario.tipo_usuario != 1" href="/myproducts">My Products</a>
       <a class="nav-item nav-link" *ngIf="usuario.tipo_usuario == 1" href="/users">Users</a>
       <a class="nav-item nav-link" *ngIf="usuario.tipo_usuario == 1" href="/reports">Reports</a>
-      <a class="nav-item nav-link" href="/settings">Settings</a>
       <a class="nav-item nav-link" href="/home" (click)="logOut()">Log out</a>
     </div>
   </div>
