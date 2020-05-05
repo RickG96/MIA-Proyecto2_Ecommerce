@@ -23,7 +23,7 @@ const createSql =
    `INSERT INTO carrito(
         id_usuario,
         total,
-        estado,
+        estado
     ) values (
         :id_usuario,
         0,

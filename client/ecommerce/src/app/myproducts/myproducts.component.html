@@ -11,6 +11,17 @@
             <button  type="button" class="btn btn-color btn-lg" (click)="addProducto(true)">New product <i class="fas fa-tshirt"></i></button>
         </div>
     </div>
+    <div class="row justify-content-center" style="padding-top: 10px;padding-bottom: 10px;">
+        <div class="col-4 text-center">
+            <form class="form-inline">
+                <div class="custom-file">
+                    <input (change)="onChanged($event)" type="file" class="custom-file-input" id="validatedCustomFile">
+                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                </div>
+            </form>
+            <button (click)="subir(this.file)" class="btn btn-primary">Upload</button>
+        </div>
+    </div>
     <div *ngIf="nuevoProducto == true;" class="row centrar">
         <div class="col">
             <div class="card mb-3" style="max-width: 540px; margin-top: 10%;">

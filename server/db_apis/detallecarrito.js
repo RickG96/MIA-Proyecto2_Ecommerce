@@ -63,3 +63,21 @@ async function borra(emp) {
 }
 
 module.exports.borra = borra
+
+const updateSql = 
+   `UPDATE detalle_carrito
+    SET estado = 2
+    WHERE id_detalle = :id_detalle`
+
+async function update(emp) {
+    const detalle = Object.assign({}, emp) 
+    const result = await database.simpleExecute(updateSql, detalle)
+
+    if (result.rowsAffected && result.rowsAffected === 1) {
+        return detalle;
+    } else {
+        return null;
+    }
+}
+
+module.exports.update = update

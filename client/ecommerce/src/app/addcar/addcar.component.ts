@@ -70,7 +70,7 @@ export class AddcarComponent implements OnInit {
   }
 
   public borrarDetalle(id: number) {
-    this.servicio.deleteDetalleCP(id)
+    this.servicio.updateDetalleCP(id)
       .subscribe(() => this.getDetalleCarrito())
   }
 

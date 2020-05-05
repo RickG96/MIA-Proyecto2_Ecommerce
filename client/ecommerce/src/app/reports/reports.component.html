@@ -1,2 +1,413 @@
 <app-headerb></app-headerb>
-<p>reports works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="titulo-lp">Reportes</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>El listado de todos los Servicio de ayuda de sexo masculino que hayan nacido arriba de X año</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" (click)="descargar(REPORTE1)">
+                descargar
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <input [(ngModel)]="txtanio1" type="text" class="form-control" placeholder="año">
+        </div>
+        <div class="col-2">
+            <button (click)="reporteUno()" class="btn btn-primary">consultar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let element of REPORTE1; index as i;">
+                    <th scope="row">{{i}}</th>
+                    <td>{{element.nombre}}</td>
+                    <td>{{element.apellido}}</td>
+                    <td>{{element.correo}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>El listado de todos los administradores de sexo femenino que hayan nacido debajo de Y año.</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" (click)="descargar(REPORTE2)">
+                descargar
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <input [(ngModel)]="txtanio2" type="text" class="form-control" placeholder="año">
+        </div>
+        <div class="col-2">
+            <button (click)="reporteDos()" class="btn btn-primary">consultar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let element of REPORTE2; index as i;">
+                    <th scope="row">{{i}}</th>
+                    <td>{{element.nombre}}</td>
+                    <td>{{element.apellido}}</td>
+                    <td>{{element.correo}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Los clientes que más ganancias han generado ordenandos de mayor a menor.</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" (click)="descargar(REPORTE3)">
+                descargar
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">id user</th>
+                    <th scope="col">products sold</th>
+                    <th scope="col">earned</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let element of REPORTE3; index as i;">
+                    <th scope="row">{{i}}</th>
+                    <td>{{element.id_usuario}}</td>
+                    <td>{{element.productos_vendidos}}</td>
+                    <td>{{element.ganado}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Todos los productos con el promedio de su puntuación para 5,4,3,2,1,0 estrellas.</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" (click)="descargar(REPORTE4)">
+                descargar
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <input [(ngModel)]="rep4.estrellas" type="number" class="form-control" placeholder="estrellsa">
+        </div>
+        <div class="col-2">
+            <button (click)="reporteCuatro()" class="btn btn-primary">consultar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">stars</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let element of REPORTE4; index as i;">
+                    <th scope="row">{{i}}</th>
+                    <td>{{element.ID_PRODUCTO}}</td>
+                    <td>{{element.NOMBRE}}</td>
+                    <td>{{element.PUNTEO}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Top 3 de productos más vendidos.</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" (click)="descargar(REPORTE5)">
+                descargar
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">sold</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let element of REPORTE5; index as i;">
+                    <th scope="row">{{i}}</th>
+                    <td>{{element.id_producto}}</td>
+                    <td>{{element.nombre_producto}}</td>
+                    <td>{{element.vendidos}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Top 3 de clientes que más productos tenga en su catálogo.</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" (click)="descargar(REPORTE6)">
+                descargar
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">products</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let element of REPORTE6; index as i;">
+                    <th scope="row">{{i}}</th>
+                    <td>{{element.ID_USARIO}}</td>
+                    <td>{{element.NOMBRE}}</td>
+                    <td>{{element.PRODUCTOS}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Listado de todos los productos indicando en que categoría se encontraban, si en dado caso tiene categorías hijas debe mostrarlas.</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" (click)="descargar(REPORTE7)">
+                descargar
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">departament</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let element of REPORTE7; index as i;">
+                    <th scope="row">{{i}}</th>
+                    <td>{{element.id_producto}}</td>
+                    <td>{{element.nombre}}</td>
+                    <td>{{element.categoria}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Todos los productos indicando la cantidad de comentarios asignados, publicados en Y fecha.</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" (click)="descargar(REPORTE8)">
+                descargar
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <input [(ngModel)]="rep8.fecha" type="text" class="form-control" placeholder="año">
+        </div>
+        <div class="col-2">
+            <button (click)="reporteOcho()" class="btn btn-primary">consultar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Comments</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let element of REPORTE8; index as i;">
+                    <th scope="row">{{i}}</th>
+                    <td>{{element.nombre}}</td>
+                    <td>{{element.comentarios}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Todos los productos que tengan X cantidad disponible.</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" (click)="descargar(REPORTE9)">
+                descargar
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <input [(ngModel)]="rep9.cantidad" type="text" class="form-control" placeholder="año">
+        </div>
+        <div class="col-2">
+            <button (click)="reporteNueve()" class="btn btn-primary">consultar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">descripcion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let element of REPORTE9; index as i;">
+                    <th scope="row">{{i}}</th>
+                    <td>{{element.NOMBRE}}</td>
+                    <td>{{element.DESCRIPCION}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Top 3 de productos con peor puntuación</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" (click)="descargar(REPORTE10)">
+                descargar
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let element of REPORTE10; index as i;">
+                    <th scope="row">{{i}}</th>
+                    <td>{{element.ID_PRODUCTO}}</td>
+                    <td>{{element.NOMBRE}}</td>
+                    <td>{{element.PUNTEO}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

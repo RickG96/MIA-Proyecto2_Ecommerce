@@ -178,4 +178,12 @@ export class ServiciosService {
   deleteDetalleCP(id) {
     return this.http.delete('http://localhost:3000/api/detallecarritos/' + id, httpOptions)
   }
+
+  updateDetalleCP(id) {
+    return this.http.put('http://localhost:3000/api/detallecarritos/' + id, httpOptions)
+  }
+  //reportes
+  getReportes(context, id) {
+    return this.http.put('http://localhost:3000/api/reportes/' + id, context, httpOptions)
+  }
 }

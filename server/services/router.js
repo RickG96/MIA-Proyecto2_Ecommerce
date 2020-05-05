@@ -7,6 +7,7 @@ const catprodu = require('../controllers/catprodu')
 const comentarios = require('../controllers/comentarios')
 const carritos = require('../controllers/carrito')
 const detalles = require('../controllers/detallecarrito')
+const reportes = require('../controllers/reportes')
 // servicios para usuarios, productos, etc
 router.route('/usuarios/:id?')
     .get(usuarios.get)
@@ -44,6 +45,10 @@ router.route('/carritos/:id?')
 router.route('/detallecarritos/:id?')
     .get(detalles.get)
     .post(detalles.post)
+    .put(detalles.put)
     .delete(detalles.borrar)
+
+router.route('/reportes/:id?')
+    .put(reportes.get)
 
 module.exports = router

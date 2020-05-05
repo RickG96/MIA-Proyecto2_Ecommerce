@@ -36,6 +36,7 @@ export class MyproductsComponent implements OnInit {
     id_producto: 0
   }
   login: any;
+  file: File;
   constructor(private servicio: ServiciosService, private router: Router) { }
 
   ngOnInit() {
@@ -50,6 +51,47 @@ export class MyproductsComponent implements OnInit {
 
   public addProducto(valor?: boolean) {
     this.nuevoProducto = valor;
+  }
+
+  onChanged(event) {
+    this.file = event.target.files[0];
+  }
+
+  subir(file: File) {
+    let lines;
+    let fileReader = new FileReader();
+    fileReader.onload = () => {
+      lines = fileReader.result.toString().split("\n")
+      this.cargaMasiva(lines)
+    }
+    fileReader.readAsText(file)
+  }
+
+  async cargaMasiva(lineas: any[]) {
+    this.usuario = this.servicio.getLog();
+    this.NEW_PRODUCT.id_usuario = this.usuario.id_usuario;
+    let categoria
+    let linea = "";
+    for(let i = 1; i < lineas.length; i++) {
+        linea = lineas[i].split(",")
+        this.NEW_PRODUCT.nombre = linea[1];
+        this.NEW_PRODUCT.descripcion = linea[3];
+        this.NEW_PRODUCT.imagen = linea[2];
+        this.NEW_PRODUCT.precio = linea[5];
+        this.NEW_PRODUCT.cantidad = linea[6];
+        this.NEW_PRODUCT.color = linea[7];
+        categoria = linea[4].split("-");
+        if(categoria.length > 1) {
+          this.nombre = categoria[1];
+        } else {
+          this.nombre = categoria[0];
+        }
+        await this.servicio.postProductos(this.NEW_PRODUCT)
+          .then(data => {
+            this.nuevores = data;
+            this.getAxuliriar();
+          })
+    }
   }
 
   onFileChanged(event) {
@@ -67,19 +109,17 @@ export class MyproductsComponent implements OnInit {
       this.servicio.postProductos(this.NEW_PRODUCT)
         .then((data) => {
           this.nuevores = data;
-          console.log(this.nuevores)
           this.getAxuliriar();
-          console.log('nepe',this.TEMPORAL);
         })
       this.servicio.uploadImage(this.NEW_PRODUCT.avatar)
         .subscribe(() => console.log('ok'));
-      this.NEW_PRODUCT.nombre = "";
+      /*this.NEW_PRODUCT.nombre = "";
       this.NEW_PRODUCT.descripcion = "";
       this.NEW_PRODUCT.imagen = "";
       this.NEW_PRODUCT.precio = "";
       this.NEW_PRODUCT.cantidad = "";
       this.NEW_PRODUCT.color = "";
-      delete this.NEW_PRODUCT.avatar;
+      delete this.NEW_PRODUCT.avatar;*/
   }
 
   public getProductos() {
@@ -92,21 +132,21 @@ export class MyproductsComponent implements OnInit {
       })
   }
 
-  public getAxuliriar() {
+  public async getAxuliriar() {
     this.usuario = this.servicio.getLog();
-    this.servicio.getProductos()
-      .then(data => {
+    await this.servicio.getProductos()
+      .then(async data => {
         this.TEMPORAL = data;
         this.TEMPORAL = this.TEMPORAL.filter(product => product.id_usuario === this.usuario.id_usuario);
         this.TEMPORAL = this.TEMPORAL.filter(product => product.estatus === 1);
         //console.log('primero',this.TEMPORAL);
-        this.TEMPORAL.forEach(item => {
+        await this.TEMPORAL.forEach(item => {
           if(item.nombre == this.nuevores.nombre) {
             this.CATPRO.id_producto = item.id_producto;
             return;
           }
         });
-        this.CATEGORIAS.forEach(categoria => {
+        await this.CATEGORIAS.forEach(categoria => {
           if(categoria.nombre == this.nombre) {
             this.CATPRO.id_categoria = categoria.id_categoria;
             if(categoria.id_padre !== null) {
@@ -117,15 +157,16 @@ export class MyproductsComponent implements OnInit {
           }
         });
         //console.log(this.CATPRO);
-          this.servicio.postCatPro(this.CATPRO)
-            .subscribe(() => console.log('ok'));
+        this.servicio.postCatPro(this.CATPRO)
+          .subscribe(() => console.log('ok'));
         if(this.CATPRO2.id_categoria !== null) {
           this.servicio.postCatPro(this.CATPRO2)
             .subscribe(() => console.log('ok'));
           this.CATPRO2.id_categoria = null;
         }
         this.getProductos();
-      })
+      });
+      
   }
 
   public upProducto(producto, valor?: boolean) {

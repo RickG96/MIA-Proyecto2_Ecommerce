@@ -50,3 +50,23 @@ async function borrar(req, res, next) {
 }
 
 module.exports.borrar = borrar
+
+async function put(req, res, next) {
+    try {
+        let detalle = {}
+
+        detalle.id_detalle = parseInt(req.params.id, 10)
+
+        detalle = await detalles.update(detalle)
+
+        if (detalle !== null) {
+            res.status(200).json(detalle);
+        } else {
+            res.status(404).end();
+        }
+    } catch(err) {
+        next(err)
+    }
+}
+
+module.exports.put = put
