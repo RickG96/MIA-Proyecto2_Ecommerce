@@ -10,6 +10,7 @@
       <a class="nav-item nav-link" *ngIf="usuario.tipo_usuario != 1" href="/myproducts">My Products</a>
       <a class="nav-item nav-link" *ngIf="usuario.tipo_usuario == 1" href="/users">Users</a>
       <a class="nav-item nav-link" *ngIf="usuario.tipo_usuario == 1" href="/reports">Reports</a>
+      <a class="nav-item nav-link" *ngIf="usuario.tipo_usuario == 1" href="/log">log</a>
       <a class="nav-item nav-link" href="/home" (click)="logOut()">Log out</a>
     </div>
   </div>

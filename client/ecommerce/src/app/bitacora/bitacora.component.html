@@ -1,0 +1,32 @@
+<app-headerb></app-headerb>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="titulo-lp">Alie's Log</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">date</th>
+                    <th scope="col">description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let element of BITACORA; index as i">
+                    <th scope="row">{{i}}</th>
+                    <td>{{element.id_usuario}}</td>
+                    <td>{{element.nombre}}</td>
+                    <td>{{element.fecha}}</td>
+                    <td>{{element.descripcion}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

@@ -186,4 +186,12 @@ export class ServiciosService {
   getReportes(context, id) {
     return this.http.put('http://localhost:3000/api/reportes/' + id, context, httpOptions)
   }
+  //bitacora
+  getBitacora() {
+    return this.http.get('http://localhost:3000/api/bitacora')
+  }
+
+  postBitacora(bitacora) {
+    return this.http.post('http://localhost:3000/api/bitacora', bitacora, httpOptions)
+  }
 }

@@ -26,6 +26,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { ChatComponent } from './chat/chat.component';
 import { SuccesComponent } from './succes/succes.component';
 import { ForguetComponent } from './forguet/forguet.component';
+import { BitacoraComponent } from './bitacora/bitacora.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ForguetComponent } from './forguet/forguet.component';
     ChatComponent,
     SuccesComponent,
     ForguetComponent,
+    BitacoraComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ const comentarios = require('../controllers/comentarios')
 const carritos = require('../controllers/carrito')
 const detalles = require('../controllers/detallecarrito')
 const reportes = require('../controllers/reportes')
+const bitacora = require('../controllers/bitacora')
 // servicios para usuarios, productos, etc
 router.route('/usuarios/:id?')
     .get(usuarios.get)
@@ -50,5 +51,9 @@ router.route('/detallecarritos/:id?')
 
 router.route('/reportes/:id?')
     .put(reportes.get)
+
+router.route('/bitacora/:id?')
+    .get(bitacora.get)
+    .post(bitacora.post)
 
 module.exports = router

@@ -37,6 +37,10 @@ export class UsersComponent implements OnInit {
     membresia: null
   }
   tipo: any = ""; //tipo de usuario  
+  bitacora: any = {
+    id_usuario: 0,
+    descripcion: ""
+  }
 
   constructor(private servicio: ServiciosService, private router: Router) { }
 
@@ -68,6 +72,10 @@ export class UsersComponent implements OnInit {
         console.log('ok')
         this.getUsers();
       })
+    this.bitacora.id_usuario = this.usuario.id_usuario
+    this.bitacora.descripcion = "the user " + this.UP_USER.nombre + " has been updated";
+    this.servicio.postBitacora(this.bitacora)
+      .subscribe(() => console.log('ok'))
   }
 
   getUsers() {
@@ -84,6 +92,10 @@ export class UsersComponent implements OnInit {
         console.log('ok')
         this.getUsers();
       })
+      this.bitacora.id_usuario = this.usuario.id_usuario
+      this.bitacora.descripcion = "the user with id: " + id_usuario + " has been deleted";
+      this.servicio.postBitacora(this.bitacora)
+        .subscribe(() => console.log('ok'))
   }
 
   onFileChanged(event) {
@@ -98,6 +110,11 @@ export class UsersComponent implements OnInit {
       .subscribe(() => this.getUsers());
     this.servicio.uploadImage(this.NUEVO.avatar)
       .subscribe(() => console.log('ok'));
+    this.bitacora.id_usuario = this.usuario.id_usuario
+    this.bitacora.descripcion = "the user " + this.NUEVO.nombre + " has been created";
+    this.servicio.postBitacora(this.bitacora)
+      .subscribe(() => console.log('ok'));
+
     this.NUEVO.nombre = "";
     this.NUEVO.apellido = "";
     this.NUEVO.correo = "";
