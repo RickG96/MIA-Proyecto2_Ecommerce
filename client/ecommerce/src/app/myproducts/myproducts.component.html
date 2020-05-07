@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="row justify-content-center" style="padding-top: 10px;padding-bottom: 10px;">
-        <div class="col-4 text-center">
+        <div class="col-12 col-md-4 text-center">
             <form class="form-inline">
                 <div class="custom-file">
                     <input (change)="onChanged($event)" type="file" class="custom-file-input" id="validatedCustomFile">
@@ -99,9 +99,9 @@
     </div>
 </div>
 
-<div class="container-md" style="padding-top: 10px;">
-    <div class="row row-cols-3">
-        <div class="col" *ngFor="let producto of ELEMENT_DATA">
+<div class="container" style="padding-top: 10px;">
+    <div class="row">
+        <div class="col-12 col-md-4" *ngFor="let producto of ELEMENT_DATA">
             <div class="card" style="width: 18rem; padding-top: 7px;">
                 <img src="{{producto.imagen}}" class="card-img-top" alt="...">
                 <div class="card-body">

@@ -1,8 +1,8 @@
 <app-headerb></app-headerb>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-4">
-            <div class="card" style="width: 18rem; padding-top: 7px;">
+        <div class="col-12 col-md-4">
+            <div class="card centrar" style="width: 18rem; padding-top: 7px;">
                 <img src="{{producto.imagen}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{producto.nombre}}</h5>
@@ -15,11 +15,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-12 col-md-8">
             <h1 class="subtitulo-lp">My cart</h1>
             <hr>
             <div class="row" *ngFor="let element of MI_CARRITO">
-                <div class="card w-75">
+                <div class="card w-75 centrar">
                     <div class="card-body producto">
                         <img src="{{element.imagen}}" alt="producto" style="border-radius: 50%">
                         <address>
@@ -28,15 +28,15 @@
                             Price: ${{element.precio}}
                         </address>
                     </div>
-                    <button class="btn btn-warning" (click)="borrarDetalle(element.id_detalle)">delete <i class="fas fa-minus-square"></i></button>
+                    <button class="btn btn-warning btn-block" (click)="borrarDetalle(element.id_detalle)">delete <i class="fas fa-minus-square"></i></button>
                 </div>
             </div>
             <div class="row">
-                <div class="card w-75">
+                <div class="card w-75 centrar">
                     <div class="card-body text-center">
                         <p>total: ${{carrito.total}}</p>
                     </div>
-                    <button class="btn btn-info" (click)="comprarCarrito()">Buy Car <i class="fas fa-money-bill-wave"></i></button>
+                    <button class="btn btn-info btn-block" (click)="comprarCarrito()">Buy Car <i class="fas fa-money-bill-wave"></i></button>
                 </div>
             </div>
         </div>

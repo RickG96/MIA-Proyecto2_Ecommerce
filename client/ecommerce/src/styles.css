@@ -52,3 +52,9 @@ body {
 .producto > address {
     display: inline-block;
 }
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }

@@ -11,11 +11,13 @@ export class HeaderbComponent implements OnInit {
   USUARIO: any = {};
   CARRITO: any = {};
   usuario: any;
+  isShown:boolean = false;
 
   constructor(private servicio: ServiciosService) { }
 
   ngOnInit() {
     this.usuario = this.servicio.getLog();
+    this.usuario.fotografia = this.usuario.fotografia.replace("localhost", "192.168.0.3");
   }
 
   logOut() {
@@ -23,4 +25,5 @@ export class HeaderbComponent implements OnInit {
     this.servicio.setCarrito(this.CARRITO);
   }
 
+  
 }

@@ -20,7 +20,7 @@ export class OptionsComponent implements OnInit {
       this.router.navigateByUrl('/denied');
     }
     this.usuario = this.servicio.getLog();
-    console.log(this.usuario)
+    this.usuario.fotografia = this.usuario.fotografia.replace("localhost", "192.168.0.3");
   } 
 
   updateUser(mostrar?: boolean) {

@@ -52,6 +52,9 @@ export class AddcarComponent implements OnInit {
         this.MI_CARRITO = data;
         this.MI_CARRITO = this.MI_CARRITO.filter(detalle => detalle.estado === 1)
         this.MI_CARRITO = this.MI_CARRITO.filter(detalle => detalle.id_carrito === this.carrito.id_carrito)
+        this.MI_CARRITO.forEach(element => {
+          element.imagen = element.imagen.replace("localhost", "192.168.0.3");
+        });
         //console.log(this.MI_CARRITO);
       })
   }

@@ -36,9 +36,13 @@ export class FeedComponent implements OnInit {
 
   public getProductos() {
     this.servicio.getProductos()
-      .then(data => {
+      .then(async data => {
         this.ELEMENT_DATA = data;
         this.ELEMENT_DATA = this.ELEMENT_DATA.filter(product => product.estatus === 1);
+        await this.ELEMENT_DATA.forEach(element => {
+          element.imagen = element.imagen.replace("localhost", "192.168.0.3");
+        });
+        console.log(this.ELEMENT_DATA);
         this.AUXILIAR = this.ELEMENT_DATA;
       })
   }

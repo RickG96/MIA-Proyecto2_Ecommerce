@@ -1,8 +1,8 @@
 <app-headerb></app-headerb>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-6">
-            <div class="card" style="width: 20rem; padding-top: 7px;">
+        <div class="col-12 col-md-6">
+            <div class="card center" style="width: 20rem; padding-top: 7px;">
                 <img src="{{producto.imagen}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{producto.nombre}}</h5>
@@ -12,8 +12,8 @@
                 </div>
             </div>
             <!--este es para añadir comentarios-->
-            <div style="width: 20rem; padding-top: 8px;">
-                <div class="card">
+            <div>
+                <div class="card center" style="width: 20rem; padding-top: 8px;">
                     <div class="card-body">
                         <div class="form-group">
                             <label for="newName">Title</label>
@@ -34,18 +34,18 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <h1 class="subtitulo-lp">Comments</h1>
             <hr>
             <div class="row row-cols-1">
-                <div class="col" style="padding-top: 8px;" *ngFor="let element of COMENTARIOS">
+                <div class="col center" style="padding-top: 8px;" *ngFor="let element of COMENTARIOS">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{element.autor}}: {{element.titulo}}</h5>
                             <p class="card-text">{{element.punteo}} <span>%</span></p>
                             <p class="card-text"><span><i class="fas fa-comment"></i></span> {{element.descripcion}}</p>
                             <ul *ngIf="element.respuesta != null">
-                                <li>{{element.respuesta}}</li>
+                                <li><span><i class="fas fa-comments"></i></span> {{element.respuesta}}</li>
                             </ul>
                             <div class="form-group" *ngIf="esAutor == true && element.respuesta == null">
                                 <label for="newName">Answer</label>

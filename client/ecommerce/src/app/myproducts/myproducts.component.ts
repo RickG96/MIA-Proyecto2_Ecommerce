@@ -129,6 +129,9 @@ export class MyproductsComponent implements OnInit {
         this.ELEMENT_DATA = data;
         this.ELEMENT_DATA = this.ELEMENT_DATA.filter(product => product.id_usuario === this.usuario.id_usuario);
         this.ELEMENT_DATA = this.ELEMENT_DATA.filter(product => product.estatus === 1);
+        this.ELEMENT_DATA.forEach(element => {
+          element.imagen = element.imagen.replace("localhost", "192.168.0.3");
+        });
       })
   }
 

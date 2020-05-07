@@ -1,11 +1,11 @@
 <app-headerb></app-headerb>
 <div class="container">
-    <div *ngIf="actualizar == false;" class="card mb-3 centrar" style="max-width: 540px; margin-top: 20%;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
+    <div *ngIf="actualizar == false;" class="card centrar" style="min-width: 20rem; margin-top: 20%;">
+        <div class="row">
+          <div class="col-12 col-md-4">
             <img src="{{usuario.fotografia}}" class="card-img" style="padding-top: 35%;" alt="user img">
           </div>
-          <div class="col-md-8">
+          <div class="col-12 col-md-8">
             <div class="card-body">
                 <h5 class="card-title">{{usuario.nombre}} {{usuario.apellido}}</h5>
                 <hr>
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div *ngIf="actualizar == true;" class="card mb-3 centrar" style="max-width: 540px; margin-top: 10%;">
-        <div class="row no-gutters">
+        <div class="row">
           <div class="col-md-8">
             <div class="card-body">
                 <h5 class="card-title">Update User</h5>

@@ -60,138 +60,138 @@ export class ServiciosService {
   uploadImage(imagenSubida: File) {
     const formData = new FormData();
     formData.append('userImage', imagenSubida);
-    return this.http.post('http://localhost:3000/imagenusuario', formData);
+    return this.http.post('http://192.168.0.3:3000/imagenusuario', formData);
   }
 
   correoVenta(listado) {
-    return this.http.post('http://localhost:3000/correoventa', listado, httpOptions)
+    return this.http.post('http://192.168.0.3:3000/correoventa', listado, httpOptions)
   }
 
   correoCompra(listado) {
-    return this.http.post('http://localhost:3000/correocompra', listado, httpOptions)
+    return this.http.post('http://192.168.0.3:3000/correocompra', listado, httpOptions)
   }
 
   correoConfirmacion(correo) {
-    return this.http.post('http://localhost:3000/confirmacion', correo, httpOptions)
+    return this.http.post('http://192.168.0.3:3000/confirmacion', correo, httpOptions)
   }
 
   correoContra(usuario) {
-    return this.http.post('http://localhost:3000/restablecer', usuario, httpOptions)
+    return this.http.post('http://192.168.0.3:3000/restablecer', usuario, httpOptions)
   }
   //api usuarios
   getUsuarios() {
-    return this.http.get('http://localhost:3000/api/usuarios');
+    return this.http.get('http://192.168.0.3:3000/api/usuarios');
   }
 
   postUsuario(usuario) {
-    return this.http.post('http://localhost:3000/api/usuarios', usuario, httpOptions)
+    return this.http.post('http://192.168.0.3:3000/api/usuarios', usuario, httpOptions)
   }
 
   deleteUsuario(id) {
-    return this.http.delete('http://localhost:3000/api/usuarios/' + id, httpOptions)
+    return this.http.delete('http://192.168.0.3:3000/api/usuarios/' + id, httpOptions)
   }
   
   putUsuario(usuario, id) {
-    return this.http.put('http://localhost:3000/api/usuarios/' + id, usuario, httpOptions)
+    return this.http.put('http://192.168.0.3:3000/api/usuarios/' + id, usuario, httpOptions)
   }
   //api productos
   getProductos() {
-    return this.http.get('http://localhost:3000/api/productos').toPromise()
+    return this.http.get('http://192.168.0.3:3000/api/productos').toPromise()
   }
 
   postProductos(producto) {
-    return this.http.post('http://localhost:3000/api/productos', producto, httpOptions).toPromise()
+    return this.http.post('http://192.168.0.3:3000/api/productos', producto, httpOptions).toPromise()
   }
 
   putProductos(producto, id) {
-    return this.http.put('http://localhost:3000/api/productos/' + id, producto, httpOptions)
+    return this.http.put('http://192.168.0.3:3000/api/productos/' + id, producto, httpOptions)
   }
 
   deleteProducto(id) {
-    return this.http.delete('http://localhost:3000/api/productos/' + id, httpOptions)
+    return this.http.delete('http://192.168.0.3:3000/api/productos/' + id, httpOptions)
   }
   //api categorias
   getCategorias() {
-    return this.http.get('http://localhost:3000/api/categorias')
+    return this.http.get('http://192.168.0.3:3000/api/categorias')
   }
 
   postCategoria(categoria) {
-    return this.http.post('http://localhost:3000/api/categorias', categoria, httpOptions)
+    return this.http.post('http://192.168.0.3:3000/api/categorias', categoria, httpOptions)
   }
 
   putCategoria(categoria, id) {
-    return this.http.put('http://localhost:3000/api/categorias/' + id, categoria, httpOptions)
+    return this.http.put('http://192.168.0.3:3000/api/categorias/' + id, categoria, httpOptions)
   }
 
   deleteCategoria(id) {
-    return this.http.delete('http://localhost:3000/api/categorias/' + id, httpOptions)
+    return this.http.delete('http://192.168.0.3:3000/api/categorias/' + id, httpOptions)
   }
   //relacion categoria con producto
   getCatPro() {
-    return this.http.get('http://localhost:3000/api/catprodu')
+    return this.http.get('http://192.168.0.3:3000/api/catprodu')
   }
 
   postCatPro(catpro) {
-    return this.http.post('http://localhost:3000/api/catprodu', catpro, httpOptions)
+    return this.http.post('http://192.168.0.3:3000/api/catprodu', catpro, httpOptions)
   }
   //comentarios
   getComentarios() {
-    return this.http.get('http://localhost:3000/api/comentarios')
+    return this.http.get('http://192.168.0.3:3000/api/comentarios')
   }
 
   postComentario(comentario) {
-    return this.http.post('http://localhost:3000/api/comentarios', comentario, httpOptions)
+    return this.http.post('http://192.168.0.3:3000/api/comentarios', comentario, httpOptions)
   }
 
   putComentario(comentario, id) {
-    return this.http.put('http://localhost:3000/api/comentarios/' + id, comentario, httpOptions)
+    return this.http.put('http://192.168.0.3:3000/api/comentarios/' + id, comentario, httpOptions)
   }
 
   deleteComentario(id) {
-    return this.http.delete('http://localhost:3000/api/comentarios/' + id, httpOptions)
+    return this.http.delete('http://192.168.0.3:3000/api/comentarios/' + id, httpOptions)
   }
   //carritos
   getCarritos() {
-    return this.http.get('http://localhost:3000/api/carritos')
+    return this.http.get('http://192.168.0.3:3000/api/carritos')
   }
 
   postCarrito(carrito) {
-    return this.http.post('http://localhost:3000/api/carritos', carrito, httpOptions)
+    return this.http.post('http://192.168.0.3:3000/api/carritos', carrito, httpOptions)
   }
 
   putCarrito(carrito, id) {
-    return this.http.put('http://localhost:3000/api/carritos/' + id, carrito, httpOptions)
+    return this.http.put('http://192.168.0.3:3000/api/carritos/' + id, carrito, httpOptions)
   }
 
   deleteCarrito(id) {
-    return this.http.delete('http://localhost:3000/api/carritos/' + id, httpOptions)
+    return this.http.delete('http://192.168.0.3:3000/api/carritos/' + id, httpOptions)
   }
   //detalle entre carritos y productos
   getDetallesCP() {
-    return this.http.get('http://localhost:3000/api/detallecarritos')
+    return this.http.get('http://192.168.0.3:3000/api/detallecarritos')
   }
 
   postDetalleCP(detalle) {
-    return this.http.post('http://localhost:3000/api/detallecarritos', detalle, httpOptions)
+    return this.http.post('http://192.168.0.3:3000/api/detallecarritos', detalle, httpOptions)
   }
 
   deleteDetalleCP(id) {
-    return this.http.delete('http://localhost:3000/api/detallecarritos/' + id, httpOptions)
+    return this.http.delete('http://192.168.0.3:3000/api/detallecarritos/' + id, httpOptions)
   }
 
   updateDetalleCP(id) {
-    return this.http.put('http://localhost:3000/api/detallecarritos/' + id, httpOptions)
+    return this.http.put('http://192.168.0.3:3000/api/detallecarritos/' + id, httpOptions)
   }
   //reportes
   getReportes(context, id) {
-    return this.http.put('http://localhost:3000/api/reportes/' + id, context, httpOptions)
+    return this.http.put('http://192.168.0.3:3000/api/reportes/' + id, context, httpOptions)
   }
   //bitacora
   getBitacora() {
-    return this.http.get('http://localhost:3000/api/bitacora')
+    return this.http.get('http://192.168.0.3:3000/api/bitacora')
   }
 
   postBitacora(bitacora) {
-    return this.http.post('http://localhost:3000/api/bitacora', bitacora, httpOptions)
+    return this.http.post('http://192.168.0.3:3000/api/bitacora', bitacora, httpOptions)
   }
 }

@@ -1,8 +1,8 @@
 <app-headerb *ngIf="login == true"></app-headerb>
 <app-header *ngIf="login == false"></app-header>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-md-3">
             <h6>Categories</h6>
             <hr>
             <div class="list-group" *ngFor="let element of PADRE">
@@ -17,30 +17,30 @@
                 </div>
             </div>
         </div>
-        <div class="col-8">
-            <h1>All Items</h1>
-            <hr>
-            <div class="container-md">
+        <div class="col-12 col-md-9">
+            <div class="container">
+                <h1>All Items</h1>
+                <hr>
+            
                 <div class="row" style="padding-bottom: 15px;">
-                    <div class="col text-center">
+                    <div class="col-12 col-md-4 text-center">
                         <input [(ngModel)]="filtro" type="text" class="form-control" id="validationCustom01">
                         <button class="btn btn-primary" (click)="filtrar()">Search</button>
                     </div>
-                    <div class="col text-center">
+                    <div class="col-12 col-md-4 text-center">
                         <button class="btn btn-info" (click)="porFecha()">date</button>
                         <button class="btn btn-dark" (click)="porPrecio()">price</button>
                         <button class="btn btn-dark" (click)="todos()">all</button>
                     </div>
-                    <div class="col text-center">
+                    <div class="col-12 col-md-4 text-center">
                         <button class="btn btn-info" (click)="ascendente()">asc <i class="fas fa-arrow-up"></i></button>
                         <button class="btn btn-dark" (click)="descendente()">des <i class="fas fa-arrow-down"></i></button>
                     </div>
                 </div>
-            </div>
-            <div class="container-md">
-                <div class="row row-cols-3">
-                    <div class="col" *ngFor="let producto of ELEMENT_DATA">
-                        <div class="card" style="width: 18rem; padding-top: 7px;">
+            
+                <div class="row">
+                    <div class="col-12 col-md-4" *ngFor="let producto of ELEMENT_DATA">
+                        <div class="card center" style="width: 18rem; padding-top: 7px;">
                             <img src="{{producto.imagen}}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{producto.nombre}}</h5>

@@ -7,6 +7,7 @@ const morgan = require('morgan')
 const multer = require('multer')
 const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer') //nuevo
+const cors = require('cors')
 
 
 let httpServer
@@ -27,6 +28,8 @@ function initialize() {
         })
         
         const upload = multer({ storage: storage });
+
+        app.use(cors())
 
         app.use('/uploads', express.static('uploads'))
         
