@@ -16,7 +16,7 @@ function initialize() {
     return new Promise((resolve, reject) => {
         const app = express()
         httpServer = http.createServer(app)
-        //const io = require('socket.io')(httpServer)
+        const io = require('socket.io')(httpServer)
         
         const storage = multer.diskStorage({
           destination: (req, res, callback) => {
@@ -78,11 +78,39 @@ function initialize() {
           res.end()
         })
 
-        /*io.on('connection', (socket) => {
+        let usrsOnline = 0;
+        let usuarios = [];
+        io.on('connection', (socket) => {
           console.log('user connected')
+          
+          socket.on('disconnect', () => {
+            console.log('user disconnected')
+            usrsOnline--
+          })
 
-          socket.emit('test event', 'here is some data')
-        })*/
+          socket.emit('test event', 'users online: ' + usrsOnline)
+
+          socket.on('message', (msg) => {
+            io.emit('message', msg)
+          });
+
+          socket.on('connected', (usr) => {
+            let encontrado = usuarios.find(usuario => usuario.id_usuario === usr.id_usuario)
+            if(encontrado === undefined) {
+              usrsOnline++
+              usuarios.push(usr)
+            }
+            io.emit('connected', usuarios)
+          })
+
+          socket.on('leave', (usr) => {
+            usuarios = usuarios.filter(usuario => usuario.id_usuario != usr.id_usuario)
+            usrsOnline--
+            io.emit('connected', usuarios)
+          })
+        })
+
+        
         ///////
 
         httpServer.listen(webServerConfig.port)

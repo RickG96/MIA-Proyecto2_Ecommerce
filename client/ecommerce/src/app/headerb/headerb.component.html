@@ -8,6 +8,7 @@
       <a class="nav-item nav-link" (click)="isShown = false" routerLink="/home">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" (click)="isShown = false" routerLink="/feed">Products</a>
       <a class="nav-item nav-link" (click)="isShown = false" *ngIf="usuario.tipo_usuario != 1" routerLink="/myproducts">My Products</a>
+      <a class="nav-item nav-link" (click)="isShown = false" *ngIf="usuario.tipo_usuario != 1" routerLink="/chat">Chat</a>
       <a class="nav-item nav-link" (click)="isShown = false" *ngIf="usuario.tipo_usuario == 1" routerLink="/users">Users</a>
       <a class="nav-item nav-link" (click)="isShown = false" *ngIf="usuario.tipo_usuario == 1" routerLink="/reports">Reports</a>
       <a class="nav-item nav-link" (click)="isShown = false" *ngIf="usuario.tipo_usuario == 1" routerLink="/log">log</a>

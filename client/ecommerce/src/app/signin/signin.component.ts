@@ -17,6 +17,7 @@ export class SigninComponent implements OnInit {
     correo: "",
     contrasenia: ""
   }
+  usr: any = {};
 
   constructor(private servicio: ServiciosService, private router: Router) { }
 
@@ -31,6 +32,7 @@ export class SigninComponent implements OnInit {
       if(usuario.correo == this.USER.correo && usuario.contrasenia == this.USER.contrasenia) {
         this.encontrado = true;
         this.servicio.setLog(usuario);
+        this.usr = usuario;
         this.CARRITOS.forEach(carrito => {
           if(carrito.id_usuario == usuario.id_usuario) {
             this.servicio.setCarrito(carrito)
@@ -40,7 +42,11 @@ export class SigninComponent implements OnInit {
     });
     if(this.encontrado) {
       this.servicio.setLogued(true);
-      this.router.navigateByUrl('/feed');
+      if(this.usr.tipo_usuario != 2) {
+        this.router.navigateByUrl('/feed');
+      } else {
+        this.router.navigateByUrl('/chat');
+      }
     } else {
       alert("ERROR");
     }

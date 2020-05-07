@@ -1,1 +1,96 @@
-<p>chat works!</p>
+<app-headerb *ngIf="usuario.tipo_usuario == 3"></app-headerb>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-6 order-last">
+            <div class="connet-bar">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="sutitulo-lp">Online:</h1>
+                            <button class="btn btn-primary" (click)="desconectar()">disconnect</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12" *ngFor="let item of CONECTADOS">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text"><span style="color:lawngreen;"><i class="fas fa-circle"></i></span> {{item.nombre}} {{item.apellido}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="!hayChat && usuario.tipo_usuario == 3">
+                        <div class="col">
+                            <button class="btn btn-primary" (click)="nuevoChat()">Help</button>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="usuario.tipo_usuario == 2">
+                        <div class="col-12" *ngFor="let item of PUNTEO">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text"><span style="color:blue;"><i class="fas fa-circle"></i></span> Cliente: {{item.cliente}} Punteo: {{item.punteo}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-12 col-md-6 order-first">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="chat-bar" *ngIf="hayChat">
+                            <div class="container">
+                                <div class="row row-cols-1">
+                                    <div class="col center" style="padding-top: 8px;" *ngFor="let item of MENSAJES">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <p class="card-text">{{item.fecha}}</p>
+                                                <ul>
+                                                    <li><span><i class="fas fa-comments"></i></span> {{item.mensaje}}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 form-bar" *ngIf="hayChat">
+                        <div class="container">
+                            
+                                <div class="row text-center">
+                                  <div class="col">
+                                    <input [(ngModel)]="mensaje" name="mensaje" type="text" class="form-control" placeholder="message">
+                                  </div>
+                                  <div class="col">
+                                    <button class="btn btn-primary btn-block" (click)="enviarMensaje()">Send</button>
+                                  </div>
+                                </div>
+                            
+                            <div class="row justify-content-center" *ngIf="usuario.tipo_usuario == 3">
+                                <div class="col">
+                                    <form>
+                                        <div class="form-group">
+                                          <label for="formControlRange">Rate this chat</label>
+                                          <input [(ngModel)]="punteo" name="rateChat" type="range" class="form-control-range" id="formControlRange">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="usuario.tipo_usuario == 3">
+                                <div class="col text-center">
+                                    <button class="btn btn-primary" (click)="terminar()">Rate and Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

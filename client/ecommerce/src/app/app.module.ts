@@ -27,6 +27,7 @@ import { ChatComponent } from './chat/chat.component';
 import { SuccesComponent } from './succes/succes.component';
 import { ForguetComponent } from './forguet/forguet.component';
 import { BitacoraComponent } from './bitacora/bitacora.component';
+import { SoporteComponent } from './soporte/soporte.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { BitacoraComponent } from './bitacora/bitacora.component';
     SuccesComponent,
     ForguetComponent,
     BitacoraComponent,
+    SoporteComponent,
   ],
   imports: [
     BrowserModule,

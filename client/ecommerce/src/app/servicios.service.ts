@@ -194,4 +194,24 @@ export class ServiciosService {
   postBitacora(bitacora) {
     return this.http.post('http://192.168.0.3:3000/api/bitacora', bitacora, httpOptions)
   }
+  //chats
+  getChats() {
+    return this.http.get('http://192.168.0.3:3000/api/chats')
+  }
+
+  postChat(chat) {
+    return this.http.post('http://192.168.0.3:3000/api/chats', chat, httpOptions)
+  }
+
+  updateChat(chat, id){
+    return this.http.put('http://192.168.0.3:3000/api/chats/' + id, chat, httpOptions)
+  }
+  //mensajes
+  getMensajes() {
+    return this.http.get('http://192.168.0.3:3000/api/mensajes')
+  }
+
+  postMensaje(mensaje) {
+    return this.http.post('http://192.168.0.3:3000/api/mensajes', mensaje, httpOptions)
+  }
 }

@@ -90,44 +90,49 @@ export class AddcarComponent implements OnInit {
   }
 
   public async comprarCarrito() {
-    let lista = this.groupBy(this.MI_CARRITO, 'id_usuario');
-    let correoVenta = [];
-    //console.log(lista);
-    for(const element in lista) {
-      //console.log(typeof element);
-      let hola = this.USUARIOS.filter(usuario => usuario.id_usuario == +element)
-      let correo = {
-        email: hola[0].correo,
-        productos: lista[element]
+    if(this.usr.credito >= this.carrito.total) {
+      let lista = this.groupBy(this.MI_CARRITO, 'id_usuario');
+      let correoVenta = [];
+      //console.log(lista);
+      for(const element in lista) {
+        //console.log(typeof element);
+        let hola = this.USUARIOS.filter(usuario => usuario.id_usuario == +element)
+        let correo = {
+          email: hola[0].correo,
+          productos: lista[element]
+        }
+        //console.log(hola)
+        correoVenta.push(correo);
       }
-      //console.log(hola)
-      correoVenta.push(correo);
+      this.servicio.correoVenta(correoVenta)
+        .subscribe(() => console.log('ok'));
+      let correoCompra = {
+        correo: this.usr.correo,
+        listado: this.MI_CARRITO,
+        total: this.carrito.total
+      }
+      this.servicio.correoCompra(correoCompra)
+        .subscribe((data) => {
+          console.log('ok')
+        })
+      await this.MI_CARRITO.forEach(element => {
+        this.borrarDetalle(element.id_detalle);
+      });
+      this.getDetalleCarrito();
+      this.usr.credito -= this.carrito.total;
+      this.carrito.total = 0;
+      this.servicio.setCarrito(this.carrito);
+      this.servicio.putCarrito(this.carrito, this.carrito.id_carrito)
+        .subscribe(() => console.log('ok'))
+      this.servicio.putUsuario(this.usr, this.usr.id_usuario)
+        .subscribe(() => {
+          this.servicio.setLog(this.usr)
+        })
+      console.log(typeof (this.usr.credito + ""));
+    } else {
+      alert('Not enough money');
     }
-    this.servicio.correoVenta(correoVenta)
-      .subscribe(() => console.log('ok'));
-    let correoCompra = {
-      correo: this.usr.correo,
-      listado: this.MI_CARRITO,
-      total: this.carrito.total
-    }
-    this.servicio.correoCompra(correoCompra)
-      .subscribe((data) => {
-        console.log('ok')
-      })
-    await this.MI_CARRITO.forEach(element => {
-      this.borrarDetalle(element.id_detalle);
-    });
-    this.getDetalleCarrito();
-    this.usr.credito -= this.carrito.total;
-    this.carrito.total = 0;
-    this.servicio.setCarrito(this.carrito);
-    this.servicio.putCarrito(this.carrito, this.carrito.id_carrito)
-      .subscribe(() => console.log('ok'))
-    this.servicio.putUsuario(this.usr, this.usr.id_usuario)
-      .subscribe(() => {
-        this.servicio.setLog(this.usr)
-      })
-    console.log(typeof (this.usr.credito + ""));
+    
   }
 
   public borrarDetalle2(id: number) {

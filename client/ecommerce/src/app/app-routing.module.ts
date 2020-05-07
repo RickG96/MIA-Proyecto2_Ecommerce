@@ -16,6 +16,7 @@ import { ChatComponent } from './chat/chat.component';
 import { SuccesComponent } from './succes/succes.component';
 import { ForguetComponent } from './forguet/forguet.component';
 import { BitacoraComponent } from './bitacora/bitacora.component';
+import {SoporteComponent} from './soporte/soporte.component';
 
 const routes: Routes = [
   {path: 'login', component: SigninComponent},
@@ -33,7 +34,8 @@ const routes: Routes = [
   {path: 'chat', component: ChatComponent},
   {path: 'success', component: SuccesComponent},
   {path: 'forget', component: ForguetComponent},
-  {path: 'log', component: BitacoraComponent}
+  {path: 'log', component: BitacoraComponent}, 
+  {path: 'soporte', component: SoporteComponent}
 ];
 
 @NgModule({

@@ -9,6 +9,8 @@ const carritos = require('../controllers/carrito')
 const detalles = require('../controllers/detallecarrito')
 const reportes = require('../controllers/reportes')
 const bitacora = require('../controllers/bitacora')
+const chats = require('../controllers/chats')
+const mensajes = require('../controllers/mensajes')
 // servicios para usuarios, productos, etc
 router.route('/usuarios/:id?')
     .get(usuarios.get)
@@ -55,5 +57,14 @@ router.route('/reportes/:id?')
 router.route('/bitacora/:id?')
     .get(bitacora.get)
     .post(bitacora.post)
+
+router.route('/chats/:id?')
+    .get(chats.get)
+    .post(chats.post)
+    .put(chats.put)
+
+router.route('/mensajes/:id?')
+    .get(mensajes.get)
+    .post(mensajes.post)
 
 module.exports = router
