@@ -191,13 +191,13 @@ async function enviarVenta(correo, html, asunto) {
     port: 465,
     secure: true,
     auth: {
-        user: 'rickgamer96@gmail.com', // generated ethereal user
-        pass: 'nintendo96' // generated ethereal password
+        user: '******', // generated ethereal user
+        pass: '******' // generated ethereal password
     }
   });
 
   let info =  {
-    from: 'rickgamer96@gmail.com', // sender address
+    from: '******', // sender address
     to: correo, // list of receivers
     text: 'Do not answer this email', // plain text body
     subject: asunto, // Subject line
@@ -220,13 +220,13 @@ async function enviarConfirmacion(correo) {
     port: 465,
     secure: true,
     auth: {
-        user: 'rickgamer96@gmail.com', // generated ethereal user
-        pass: 'nintendo96' // generated ethereal password
+        user: '******', // generated ethereal user
+        pass: '******' // generated ethereal password
     }
   });
 
   let info =  {
-    from: 'rickgamer96@gmail.com', // sender address
+    from: '******', // sender address
     to: correo, // list of receivers
     text: 'Do not answer this email', // plain text body
     subject: 'Email confirmation', // Subject line
@@ -249,8 +249,8 @@ async function nuevaContrasenia(usuario) {
     port: 465,
     secure: true,
     auth: {
-        user: 'rickgamer96@gmail.com', // generated ethereal user
-        pass: 'nintendo96' // generated ethereal password
+        user: '******', // generated ethereal user
+        pass: '******' // generated ethereal password
     }
   });
 
